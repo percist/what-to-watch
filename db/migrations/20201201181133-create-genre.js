@@ -9,7 +9,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       genre: {
-        type: Sequelize.STRING
+        unique: true,
+        allowNull: false,
+        type: Sequelize.STRING(50)
       },
       createdAt: {
         allowNull: false,

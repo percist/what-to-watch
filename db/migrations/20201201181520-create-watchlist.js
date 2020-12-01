@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       watchStatus: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING(20)
       },
       createdAt: {
         allowNull: false,

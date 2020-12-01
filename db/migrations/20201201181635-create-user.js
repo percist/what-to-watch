@@ -9,13 +9,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       email: {
-        type: Sequelize.STRING
+        allowNull: false,
+        unique: true,
+        type: Sequelize.STRING(200)
       },
       hashedPassword: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING.BINARY
       },
       watchedListId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { models: 'Watchlists' }
       },
       createdAt: {
         allowNull: false,
