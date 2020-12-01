@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: Sequelize.INTEGER
     },
+    name: {
+      allowNull: false,
+      type: Sequelize.STRING(200)
+    },
     email: {
       allowNull: false,
       unique: true,
@@ -16,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: Sequelize.STRING.BINARY
     },
-    watchedListId: {
+    watchListId: {
       allowNull: false,
       type: Sequelize.INTEGER,
       references: { models: 'Watchlists' }

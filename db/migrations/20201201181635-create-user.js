@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING(200)
+      },
       email: {
         allowNull: false,
         unique: true,
@@ -17,10 +21,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING.BINARY
       },
-      watchedListId: {
+      watchListId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { models: 'Watchlists' }
+        references: { model: 'Watchlists' }
       },
       createdAt: {
         allowNull: false,
