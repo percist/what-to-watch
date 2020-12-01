@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     watchListId: {
       allowNull: false,
       type: Sequelize.INTEGER,
-      references: { models: 'Watchlists' }
+      references: { model: 'Watchlists' }
     },
     createdAt: {
       allowNull: false,
