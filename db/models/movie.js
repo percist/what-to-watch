@@ -1,16 +1,23 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Genre = sequelize.define('Genre', {
+  const Movie = sequelize.define('Movie', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER
     },
-    genre: {
-      unique: true,
+    title: {
       allowNull: false,
-      type: Sequelize.STRING(50)
+      type: Sequelize.STRING(255)
+    },
+    genreId: {
+      allowNull: false,
+      type: Sequelize.INTEGER,
+      references: { model: 'Genres' }
+    },
+    moviePoster: {
+      type: Sequelize.STRING
     },
     createdAt: {
       allowNull: false,
@@ -21,8 +28,8 @@ module.exports = (sequelize, DataTypes) => {
       type: Sequelize.DATE
     }
   }, {});
-  Genre.associate = function(models) {
+  Movie.associate = function(models) {
     // associations can be defined here
   };
-  return Genre;
+  return Movie;
 };
