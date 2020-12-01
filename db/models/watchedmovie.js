@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   WatchedMovie.associate = function(models) {
-    // associations can be defined here
+    WatchedMovie.belongsTo(models.Watchlist, {foreignKey: 'watchlistId'});
+    WatchedMovie.belongsTo(models.Movie, {foreignKey: 'movieId'});
 
   };
   return WatchedMovie;

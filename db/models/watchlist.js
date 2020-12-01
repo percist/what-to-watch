@@ -21,7 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Watchlist.associate = function(models) {
-    // associations can be defined here
+    const columnMapping = {
+      through: 'WatchMovies', // This is the model name referencing the join table.
+      otherKey: 'movieId',
+      foreignKey: 'watchlistId'
+    }
+
+    Watchlist.belongsToMany(models.Movie, columnMapping);
   };
   return Watchlist;
 };
