@@ -7,9 +7,8 @@ html
   body
     //- if locals.authenticated
     nav(class='navbar navbar-expand-lg navbar-dark bg-primary')
-      div: a(class='navbar-links' href='/') What to Watch
+      div(class='navbar-div'): a(class='navbar-links' href='/') What to Watch
       div: a(class='navbar-links' href='/watchlists') My Movies
-      div: button(class='navbar-links dropdown' href='/movies') Browse
         //- for each genre in genres
         //-   a(href=genre)=genere.name
       div(class='navbar-links' id='navbarText')
