@@ -9,7 +9,7 @@ const db = require('../db/models');
 const { User } = db;
 
 const validateEmailAndPassword = [
-  check('emailAddress')
+  check('email')
     .exists({checkFalsy: true})
     .withMessage('Please provide a value for Email Address')
     .isLength({max: 255})
@@ -17,7 +17,7 @@ const validateEmailAndPassword = [
     .isEmail()
     .withMessage('Email Address is not a valid email')
     .custom((value) => {
-      return db.User.findOne({ where: { emailAddress: value } })
+      return db.User.findOne({ where: { email: value } })
         .then((user) => {
           if (user) {
             return Promise.reject('The provided email address is already in use')
@@ -45,9 +45,14 @@ const validateEmailAndPassword = [
 ];
 
 const validateEmailAndPasswordForLogin = [
-  check('email').exists({ checkFalsy: true }).isEmail().withMessage('Please provide a valid email.'),
-  check('password').exists({ checkFalsy: true }).withMessage('Please provide a password.'),
-  handleValidationErrors,
+  check('email')
+    .exists({ checkFalsy: true })
+    .isEmail()
+    .withMessage('Please provide a valid email.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a password.'),
+  // handleValidationErrors,
 ];
 
 // Render index
