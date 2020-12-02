@@ -1,37 +1,31 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
-    },
     name: {
       allowNull: false,
-      type: Sequelize.STRING(200)
+      type: DataTypes.STRING(200)
     },
     email: {
       allowNull: false,
       unique: true,
-      type: Sequelize.STRING(200)
+      type: DataTypes.STRING(200)
     },
     hashedPassword: {
       allowNull: false,
-      type: Sequelize.STRING.BINARY
+      type: DataTypes.STRING.BINARY
     },
     watchListId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: { model: 'Watchlists' }
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     }
   }, {});
   User.associate = function(models) {

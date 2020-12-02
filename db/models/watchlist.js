@@ -1,23 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Watchlist = sequelize.define('Watchlist', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
-    },
     watchStatus: {
       allowNull: false,
-      type: Sequelize.STRING(20)
+      type: DataTypes.STRING(20)
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     }
   }, {});
   Watchlist.associate = function(models) {

@@ -1,24 +1,18 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Genre = sequelize.define('Genre', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
-    },
     genre: {
       unique: true,
       allowNull: false,
-      type: Sequelize.STRING(50)
+      type: DataTypes.STRING(50)
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     }
   }, {});
   Genre.associate = function(models) {
