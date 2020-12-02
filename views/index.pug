@@ -1,20 +1,23 @@
-extends layout
+doctype html
+html
+  head
+    title="Express Starter App"
+    link(rel='stylesheet' href='/stylesheets/reset.css')
+    script(src="/javascripts/index.js" type="module" defer)
 
-append head
-  //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
-  //- add page specific js
-  script(src="/javascripts/index.js" type="module" defer)
-  
-  meta(charset='utf-8')
-  
-  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(charset='utf-8')
+
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
    
-block content
-  span(class="navbar-text")          
-    form(class='form-inline' action='/users/login' method='get')
-      button(class='btn' href='/users/login' type='submit') Login
-    form(class='form-inline' action='/users/register' method='get')
-      button(class='btn' href='/users/register' type='submit') Register 
-  h1= title
-  p Welcome to What to Watch! Please login or register to get Watching!!
+  //- add page specific styles by appending to the head
+    link(rel="stylesheet" href="/stylesheets/index.css")
+  //- add page specific js
+  body
+    span(class="navbar-text")          
+      form(class='form-inline validation-form' action='/users/login' method='get')
+        button(class='btn btn-validate' href='/users/login' type='submit') Login
+      form(class='form-inline validation-form' action='/users/register' method='get')
+        button(class='btn btn-validate' href='/users/register' type='submit') Register 
+    h1= title
+    p Welcome to What to Watch! Please login or register to get Watching!!
+
