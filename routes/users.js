@@ -12,12 +12,38 @@ router.get('/', function(req, res, next) {
 
 router.get('/users/register', csrfProtection, asyncHandler(async(req, res) => {
   const user = db.User.build();
-  res.render('sign-up', {
+  res.render('user-register', {
     user,
     csrfToken: req.csrfToken()
   });
 }));
 
+router.post('/users/register', csrfProtection, asyncHandler(async(req, res) => {
+  const {
+    name,
+    email,
+    password
+  } = req.body;
+
+  const user = db.User.build({
+    name,
+    email
+  });
+}));
+
+router.get('/user/login', csrfProtection, (req, res) => {
+  res.render('user-login', {
+    title: 'Login',
+    csrfToken: req.csrfToken()
+  })
+});
+
+router.post('/user/login', csrfProtection, asyncHandler(async (req, res) => {
+  const {
+    email,
+    password
+  } = req.body;
+}));
 
 
 module.exports = router;
