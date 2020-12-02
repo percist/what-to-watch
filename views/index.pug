@@ -9,7 +9,12 @@ append head
   meta(charset='utf-8')
   
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
-
+   
 block content
+  span(class="navbar-text")          
+    form(class='form-inline' action='/users/login' method='get')
+      button(class='btn' href='/users/login' type='submit') Login
+    form(class='form-inline' action='/users/register' method='get')
+      button(class='btn' href='/users/register' type='submit') Register 
   h1= title
-  p Welcome to your Project Skeleton
+  p Welcome to What to Watch! Please login or register to get Watching!!
