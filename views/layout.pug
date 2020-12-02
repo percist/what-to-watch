@@ -5,7 +5,7 @@ html
         title="Express Starter App"
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
-    //- if locals.authenticated
+    if locals.authenticated
     nav(class='navbar navbar-expand-lg navbar-dark bg-primary')
       div(class='navbar-div'): a(class='navbar-links' href='/') What to Watch
       div(class='navbar-div'): a(class='navbar-links' href='/watchlists') My Movies

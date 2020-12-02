@@ -115,7 +115,7 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
     email,
     password
   } = req.body;
-
+console.log('1??????????')
   let errors = [];
   const validatorErrors = validationResult(req);
 
@@ -124,6 +124,7 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
 
     if (user !== null) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+      console.log('2!!!!!!!')
 
       if (passwordMatch) {
         loginUser(req, res, user);
