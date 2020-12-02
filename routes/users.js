@@ -2,6 +2,7 @@ const express = require('express');
 const { check, validationResult } = require('express-validator')
 const { loginUser, restoreUser } = require('../auth');
 const { asyncHandler, handleValidationErrors, csrfProtection} = require('../utils')
+const bcrypt = require('bcrypt')
 const router = express.Router();
 
 const db = require('../db/models');
@@ -44,19 +45,11 @@ const validateEmailAndPassword = [
 ];
 
 
-
-
-
-
-
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 // Render index
 router.get('/', asyncHandler(async(req, res) => {
   res.render('index');
 }));
+
 // render register page
 router.get('/register', csrfProtection, asyncHandler(async(req, res) => {
   const user = db.User.build();
@@ -77,9 +70,10 @@ router.post('/users', csrfProtection, asyncHandler(async (req, res) => {
   const user = db.User.build({
     firstName,
     lastName,
-    email,
-    password
+    email
   });
+
+  const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 10);
