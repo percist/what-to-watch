@@ -25,11 +25,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING.BINARY
       },
-      watchListId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Watchlists' }
-      },
+      // watchListId: {
+      //   allowNull: false,
+      //   type: Sequelize.INTEGER,
+      //   references: { model: 'Watchlists' }
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

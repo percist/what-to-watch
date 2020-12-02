@@ -18,10 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING.BINARY
     },
-    watchListId: {
-      allowNull: false,
-      type: DataTypes.INTEGER
-    }
+    // watchListId: {
+    //   allowNull: false,
+    //   type: DataTypes.INTEGER
+    // }
   }, {});
   User.associate = function(models) {
     // associations can be defined here
