@@ -4,7 +4,7 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color:#D8D8D8;
-  color:#333333;
+  /* color:#333333; */
 }
 
 a {
@@ -13,21 +13,24 @@ a {
 
 form{
   background-color:#D6D0C4;
-  color:#333333;
+  /* color:#333333; */
 }
 
 .btn{
   background-color: #B38B22;
-  color:#333333;
+  /* color:#333333; */
   font-weight: 100;
 }
 
 * {
   box-sizing: border-box;
+  background-color: brown;
 }
 
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
 body, header, nav {
+  /* background-color: brown; */
+  color: magenta;
   font-size: 1rem;
   color: inherit;
   background-color: transparent;
