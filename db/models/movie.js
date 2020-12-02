@@ -1,31 +1,20 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Movie = sequelize.define('Movie', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
     title: {
       allowNull: false,
       type: DataTypes.STRING(255)
     },
     genreId: {
       allowNull: false,
-      type: DataTypes.INTEGER,
-      references: { model: 'Genres' }
+      type: DataTypes.INTEGER
+    },
+    watchStatus: {
+      allowNull: false,
+      type: DataTypes.STRING(20)
     },
     moviePoster: {
       type: DataTypes.STRING
-    },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE
     }
   }, {});
   Movie.associate = function(models) {
@@ -37,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'watchlistId',
       foreignKey: 'movieId'
     }
-    Movie.belongsToMany(models.WatchList, columnMapping);
+    Movie.belongsToMany(models.Watchlist, columnMapping);
   };
   return Movie;
 };

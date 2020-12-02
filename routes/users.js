@@ -5,6 +5,13 @@ const { asyncHandler, handleValidationErrors, csrfProtection} = require('../util
 const router = express.Router();
 
 const db = require('../db/models');
+const { User, watchList, Movie, Genre,  } = db;
+
+const validateEmailAndPassword = [
+  check('email').exists({ checkFalsy: true }).isEmail().withMessage('Please provide a valid email.'),
+  check('password').exists({ checkFalsy: true }).withMessage('Please provide a password.'),
+  handleValidationErrors,
+];
 
 
 
