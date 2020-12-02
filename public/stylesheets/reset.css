@@ -2,8 +2,8 @@
 
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color:#D8D8D8;
+  font: 14px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: rgba(244, 241, 234, 0.5);
   /* color:#333333; */
 }
 
@@ -15,7 +15,7 @@ a {
   display: flex;
   justify-content: space-around;
   align-items: center;  
-  background-color:#D6D0C4;
+  background-color:#F4F1EA;
   
 
 }
@@ -24,8 +24,17 @@ a {
   font-size: 125%;
 }
 
+.navbar-div {
+  border: black 1px;
+  line-height: 50px;
+}
+.navbar-div:hover {
+  background-color: #382110;
+  color: white;
+}
+
 form{
-  background-color:#D6D0C4;
+  background-color:#F4F1EA;
   /* color:#333333; */
 }
 
@@ -38,8 +47,7 @@ form{
 * {
   box-sizing: border-box; 
   padding: 20px;
-  color: magenta;
-  background-color: brown;
+  
 }
 
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
