@@ -134,9 +134,9 @@ router.post('/login', csrfProtection, validateEmailAndPassword, asyncHandler(asy
 
 }));
 
-router.post('/user/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   logoutUser(req, res);
-  res.redirect('/user/login');
+  res.redirect('/login');
 })
 
 module.exports = router;
