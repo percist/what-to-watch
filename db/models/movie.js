@@ -5,27 +5,27 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
     title: {
       allowNull: false,
-      type: Sequelize.STRING(255)
+      type: DataTypes.STRING(255)
     },
     genreId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: { model: 'Genres' }
     },
     moviePoster: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     }
   }, {});
   Movie.associate = function(models) {

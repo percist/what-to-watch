@@ -5,25 +5,25 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
     watchListId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: { model: 'Watchlists' }
     },
     movieId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: { model: 'Movies' }
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     }
   }, {});
   WatchedMovie.associate = function(models) {

@@ -5,24 +5,24 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
     watchStatus: {
       allowNull: false,
-      type: Sequelize.STRING(20)
+      type: DataTypes.STRING(20)
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     }
   }, {});
   Watchlist.associate = function(models) {
     const columnMapping = {
-      through: 'WatchMovies', // This is the model name referencing the join table.
+      through: 'WatchedMovie', // This is the model name referencing the join table.
       otherKey: 'movieId',
       foreignKey: 'watchlistId'
     }
