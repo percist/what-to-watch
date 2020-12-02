@@ -8,10 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      watchStatus: {
-        allowNull: false,
-        type: Sequelize.STRING(20)
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

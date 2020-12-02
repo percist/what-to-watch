@@ -1,4 +1,4 @@
-const { validationResult } = require('express-valdator');
+const { validationResult } = require('express-validator');
 const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 
