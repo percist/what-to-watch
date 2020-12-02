@@ -44,6 +44,7 @@ const restoreUser = async (req, res, next) => {
 
 module.exports = {
   loginUser,
+  requireAuth,
   logoutUser,
   restoreUser,
 };
