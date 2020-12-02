@@ -1,6 +1,6 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator')
-const { loginUser, restoreUser } = require('../auth');
+const { loginUser, logoutUser } = require('../auth');
 const { asyncHandler, handleValidationErrors, csrfProtection} = require('../utils')
 const bcrypt = require('bcrypt')
 const router = express.Router();
@@ -43,7 +43,6 @@ const validateEmailAndPassword = [
       return true;
     })
 ];
-
 
 // Render index
 router.get('/', asyncHandler(async(req, res) => {
@@ -135,9 +134,9 @@ router.post('/login', csrfProtection, validateEmailAndPassword, asyncHandler(asy
 
 }));
 
-// router.post('/user/logout', (req, res) => {
-//   logoutUser(req, res);
-//   res.redirect('/user/login');
-// })
+router.post('/user/logout', (req, res) => {
+  logoutUser(req, res);
+  res.redirect('/user/login');
+})
 
 module.exports = router;
