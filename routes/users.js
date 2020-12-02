@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const router = express.Router();
 
 const db = require('../db/models');
-// const { User } = db;
+const { User } = db;
 
 const validateEmailAndPassword = [
   check('emailAddress')
@@ -42,6 +42,12 @@ const validateEmailAndPassword = [
       }
       return true;
     })
+];
+
+const validateEmailAndPasswordForLogin = [
+  check('email').exists({ checkFalsy: true }).isEmail().withMessage('Please provide a valid email.'),
+  check('password').exists({ checkFalsy: true }).withMessage('Please provide a password.'),
+  handleValidationErrors,
 ];
 
 // Render index
@@ -99,9 +105,9 @@ router.get('/login', csrfProtection, (req, res) => {
   })
 });
 
-router.post('/login', csrfProtection, validateEmailAndPassword, asyncHandler(async (req, res) => {
+router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHandler(async (req, res) => {
   const {
-    emailAddress,
+    email,
     password
   } = req.body;
 
@@ -109,7 +115,7 @@ router.post('/login', csrfProtection, validateEmailAndPassword, asyncHandler(asy
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
-    const user = await db.User.findOne({ where: { emailAddress } });
+    const user = await db.User.findOne({ where: { email } });
 
     if (user !== null) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
@@ -127,7 +133,7 @@ router.post('/login', csrfProtection, validateEmailAndPassword, asyncHandler(asy
 
   res.render('login', {
     title: 'Login',
-    emailAddress,
+    email,
     errors,
     csrfToken: req.csrfToken()
   });
@@ -136,7 +142,7 @@ router.post('/login', csrfProtection, validateEmailAndPassword, asyncHandler(asy
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
-  res.redirect('/login');
+  res.redirect('/');
 })
 
 module.exports = router;
