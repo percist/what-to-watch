@@ -24,6 +24,10 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.get('/', asyncHandler(async(req, res) => {
+  res.render('index');
+}));
+
 router.get('/users/register', csrfProtection, asyncHandler(async(req, res) => {
   const user = db.User.build();
   res.render('user-register', {
@@ -58,6 +62,7 @@ router.post('/user/login', csrfProtection, asyncHandler(async (req, res) => {
     password
   } = req.body;
 }));
+
 
 
 module.exports = router;
