@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Genres' }
       },
+      watchStatus: {
+        allowNull: false,
+        type: Sequelize.STRING(20)
+      },
       moviePoster: {
         type: Sequelize.STRING
       },

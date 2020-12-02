@@ -1,32 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const WatchedMovie = sequelize.define('WatchedMovie', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
-    },
     watchListId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
-      references: { model: 'Watchlists' }
+      type: DataTypes.INTEGER,
     },
     movieId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
-      references: { model: 'Movies' }
-    },
-    createdAt: {
-      allowNull: false,
-      type: Sequelize.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.INTEGER
     }
   }, {});
   WatchedMovie.associate = function(models) {
+    
     WatchedMovie.belongsTo(models.Watchlist, {foreignKey: 'watchlistId'});
     WatchedMovie.belongsTo(models.Movie, {foreignKey: 'movieId'});
 
