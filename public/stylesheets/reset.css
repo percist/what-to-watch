@@ -4,30 +4,46 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color:#D8D8D8;
-  color:#333333;
+  /* color:#333333; */
 }
 
 a {
   color: magenta;
 }
 
+.navbar { 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;  
+  background-color:#D6D0C4;
+
+}
+
+.navbar-links {
+}
+
 form{
   background-color:#D6D0C4;
-  color:#333333;
+  /* color:#333333; */
 }
 
 .btn{
-  background-color: #B38B22;
+  background-color: #cfac51;
   color:#333333;
-  font-weight: 100;
+  font-weight: 300;
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; 
+  padding: 20px;
+  color: magenta;
+  background-color: brown;
 }
 
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
 body, header, nav {
+  /* background-color: brown; */
+ 
   font-size: 1rem;
   color: inherit;
   background-color: transparent;
