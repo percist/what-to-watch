@@ -15,7 +15,12 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'Users'}
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

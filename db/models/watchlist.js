@@ -1,7 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Watchlist = sequelize.define('Watchlist', {
-   
+    userId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: { model: 'Users'}
+    },
   }, {});
   Watchlist.associate = function(models) {
     const columnMapping = {
@@ -11,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     Watchlist.belongsToMany(models.Movie, columnMapping);
+    Watchlist.belongsTo(models.User, { foreignKey: 'userId'});
   };
   return Watchlist;
 };
