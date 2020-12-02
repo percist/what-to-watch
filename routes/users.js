@@ -5,12 +5,42 @@ const { asyncHandler, handleValidationErrors, csrfProtection} = require('../util
 const router = express.Router();
 
 const db = require('../db/models');
-const { User, watchList, Movie, Genre,  } = db;
+const { User } = db;
 
 const validateEmailAndPassword = [
-  check('email').exists({ checkFalsy: true }).isEmail().withMessage('Please provide a valid email.'),
-  check('password').exists({ checkFalsy: true }).withMessage('Please provide a password.'),
-  handleValidationErrors,
+  check('emailAddress')
+    .exists({checkFalsy: true})
+    .withMessage('Please provide a value for Email Address')
+    .isLength({max: 255})
+    .withMessage('Email Address must not be more than 255 characters')
+    .isEmail()
+    .withMessage('Email Address is not a valid email')
+    .custom((value) => {
+      return db.User.findOne({ where: { emailAddress: value } })
+        .then((user) => {
+          if (user) {
+            return Promise.reject('The provided email address is already in use')
+          }
+        })
+    }),
+  check('password')
+    .exists({checkFalsy: true})
+    .withMessage('Please provide a value for Password')
+    .isLength({max: 50})
+    .withMessage('Password must not be more than 50 characters long')
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
+    .withMessage('Password must contain at least 1 lowercase letter, uppercase letter, number, and special character'),
+  check('confirmPassword')
+    .exists({checkFalsy: true})
+    .withMessage('Please provide a value for Confirm Password')
+    .isLength({max: 50})
+    .withMessage('Confirm Password must not be more than 50 characters long')
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Confirm Password does not match Password');
+      }
+      return true;
+    })
 ];
 
 
