@@ -16,10 +16,12 @@ a {
   justify-content: space-around;
   align-items: center;  
   background-color:#D6D0C4;
+  
 
 }
 
 .navbar-links {
+  font-size: 125%;
 }
 
 form{
