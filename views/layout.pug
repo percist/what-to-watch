@@ -14,9 +14,7 @@ html
         ul(class='navbar-nav mr-auto')
           //- span(class='navbar-text px-4') Welcome #{user.firstName}!
           form(class='form-inline pr-4' action='/logout' method='post')
-            button(class='btn btn-sm btn-warning' type='submit') Logout
+            button(class='btn btn-sm btn-warning navbar-links' type='submit') Logout
     //- 
-    span(class="navbar-text px-4")
-      button(class='btn btn-sm btn-dark' href='/login') Login
-      button(class='btn btn-sm btn-dark' href='/register') Register    
+      
     block content
