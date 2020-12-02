@@ -8,14 +8,14 @@ html
     //- if locals.authenticated
     nav(class='navbar navbar-expand-lg navbar-dark bg-primary')
       div(class='navbar-div'): a(class='navbar-links' href='/') What to Watch
-      div: a(class='navbar-links' href='/watchlists') My Movies
+      div(class='navbar-div'): a(class='navbar-links' href='/watchlists') My Movies
         //- for each genre in genres
         //-   a(href=genre)=genere.name
       div(class='navbar-links' id='navbarText')
         ul(class='navbar-nav mr-auto')
           //- span(class='navbar-text px-4') Welcome #{user.firstName}!
           form(class='form-inline pr-4' action='/logout' method='post')
-            button(class='btn btn-sm btn-warning navbar-links' type='submit') Logout
+            button(class='btn navbar-links' id='logout' type='submit') Logout
     //- 
       
     block content
