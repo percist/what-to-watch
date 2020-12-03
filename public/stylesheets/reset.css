@@ -16,9 +16,9 @@ a {
   justify-content: space-around;
   align-items: center;  
   background-color:#F4F1EA;
-  
-
 }
+
+/* TODO: text wrap movie overview */
 
 .navbar-links {
   font-size: 125%;
