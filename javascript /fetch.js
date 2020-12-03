@@ -16,11 +16,11 @@ for (let i = 0; i < 5; i++) {
   .then(json => {
       movieObject = {
           title: json.title,
-          poster_path: json.poster_path,
-          id: json.id,
-          genres: json.genres,
+          posterPath: json.poster_path,
+          tmdbId: json.id,
+          genres: json.genres[0].name,
           overview: json.overview,
-          release_date: json.release_date,
+          releaseDate: json.release_date,
           runtime: json.runtime
       }
   });
