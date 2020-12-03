@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     Movie.hasMany(models.Review, {foreignKey: 'movieId'});
     const columnMapping = {
       through: 'WatchedMovies', // This is the model name referencing the join table.
-      otherKey: 'watchlistId',
+      otherKey: 'watchListId',
       foreignKey: 'movieId'
     }
     Movie.belongsToMany(models.Watchlist, columnMapping);

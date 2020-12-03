@@ -1,29 +1,34 @@
 extends layout
 
-
-div(class="movie-container-1")
-    div(class="movie-poster")=poster
-    div(class="movie-info")
-        ul  
-            li=title
-            li=releaseDate
-            li=overview
-    div
-            //- todo Watched Button PUT
-        form(class='form-inline ' action='/movies/watched' method='put')
-            button(class='btn navbar-links' id='watched' type='submit') Watched
-            //- todo Want to Watch Button PUT
-        form(class='form-inline ' action='/movies/want-to-watch' method='put')
-            button(class='btn navbar-links' id='want-to-watch' type='submit') Want to Watch
-    div
-            //- todo Write a Reveiw button GET movies/review form
-        form(class='form-inline ' action='/movies/review' method='get')
-            button(class='btn navbar-links' id='review' type='submit') Write a Review
-    div
-    div(class="movie-reviews")
-        each review in reviews
-            div(class="movie-reviews_stars")=review.stars
-            div(class="movie-reviews_text")=review.review
-
+block content
+        div(class="movie-container-1")
+            div(class="movie-poster")
+            img(src= poster)
+            div(class="movie-info")
+                ul  
+                    li=title
+                    li=releaseDate
+                    li=overview
+            div
+                //- todo Watched Button PUT
+                form(class='form-inline ' action='/movies/watched' method='put')
+                    button(class='btn navbar-links' id='watched' type='submit') Watched
+                    //- todo Want to Watch Button PUT
+                form(class='form-inline ' action='/movies/want-to-watch' method='put')
+                    button(class='btn navbar-links' id='want-to-watch' type='submit') Want to Watch
+            div
+                //- todo Write a Reveiw button GET movies/review form
+                form(class='form-inline ' action='/movies/review' method='get')
+                    button(class='btn navbar-links' id='review' type='submit') Write a Review
+            div
+            div(class="movie-reviews")
+                //- TODO display review if there is one. Display a messgae indicating you are 
+                    the first to review if there isn't one. 
+                if reviews 
+                    each review in reviews
+                        div(class="movie-reviews_stars")=review.stars
+                        div(class="movie-reviews_text")=review.review
+                else 
+                    p There are no reviews. Be the first to review this movie!
 
 

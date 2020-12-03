@@ -11,20 +11,21 @@ const { getMaxListeners } = require('../app');
 //   const movies = await db.Movie.findAll({include: db.Genre});
 // }
 
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-  const movieId = parseInt(req.params.id, 10);
+router.get('/1', asyncHandler(async (req, res) => {
+  // const movieId = parseInt(req.params.id, 10);
 
+  const movieId = '1';
   const movie = await db.Movie.findByPk(movieId)
-  const reviews = await db.Reviews.findall({
+  const reviews = await db.Review.findAll({
     where: {
       movieId
     }
   })
 
-  res.render('movie-results', { 
+  res.render('movie', { 
     reviews,
     title: movie.title, 
-    poster: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
+    poster: `https://image.tmdb.org/t/p/original${movie.posterPath}`,
     releaseDate: movie.release_date,
     runtime: movie.runtime,
     genres: movie.genres,
