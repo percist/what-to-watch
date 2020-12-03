@@ -90,7 +90,7 @@ router.post('/register', csrfProtection, asyncHandler(async (req, res) => {
     user.hashedPassword = hashedPassword;
     await user.save();
     loginUser(req, res, user);
-    res.redirect('/');
+    res.render('user');
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('register', {
@@ -128,7 +128,7 @@ console.log('1??????????')
 
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.redirect('/');
+        return res.render('user');
       }
     }
 
