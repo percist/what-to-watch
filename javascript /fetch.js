@@ -26,14 +26,17 @@ for (let i = 0; i < 5; i++) {
   });
 
 console.log(movieObject);
-
-await fs.writeFile('movies.txt', movieObject, function (err) {
+try {
+await fs.writeFile('movies.txt', JSON.stringify(movieObject), function (err) {
     if (err)
         return console.log(err);
     console.log('Wrote Hello World in file helloworld.txt, just check it');
     return;
 });
 movieNumber++;
+} catch (e) {
+    console.error(e);
+}
 };
 }
 fetchMovie();
