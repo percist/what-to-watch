@@ -26,7 +26,6 @@ module.exports = {
         type: Sequelize.STRING.BINARY
       },
       // watchListId: {
-      //   allowNull: false,
       //   type: Sequelize.INTEGER,
       //   references: { model: 'Watchlists' }
       // },

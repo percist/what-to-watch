@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING.BINARY
     },
     // watchListId: {
-    //   allowNull: false,
     //   type: DataTypes.INTEGER
     // }
   }, {});
