@@ -14,7 +14,6 @@ module.exports = {
       },
       posterPath: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       tmdbId: {
         type: Sequelize.INTEGER,

@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     posterPath: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     tmdbId: {
       type: DataTypes.INTEGER,
