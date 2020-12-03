@@ -26,7 +26,7 @@ for (let i = 0; i < 5; i++) {
   });
 
 console.log(movieObject);
-try {
+
 await fs.writeFile('movies.txt', JSON.stringify(movieObject), function (err) {
     if (err)
         return console.log(err);
@@ -34,9 +34,7 @@ await fs.writeFile('movies.txt', JSON.stringify(movieObject), function (err) {
     return;
 });
 movieNumber++;
-} catch (e) {
-    console.error(e);
-}
-};
+} 
+
 }
 fetchMovie();
