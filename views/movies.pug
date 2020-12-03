@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  each movie in movies
+    table(class='table movie-table')
+      thead
+        tr
+          th(class='col') Title
+          th(scope='col') Genre
+          th(scope='col') Want to Watch
+          th(scope='col') Seen!
+      tbody
+        each movie in movies
+          tr
+            td= movie.title
+            td= movie.Genre.name
+            td 
+            td
