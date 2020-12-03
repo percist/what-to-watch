@@ -12,24 +12,37 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(255)
       },
-      genreId: {
-        allowNull: false,
+      posterPath: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      tmdbId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Genres' }
+        allowNull: false
+      },
+      genres: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+      },
+      overview: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      releaseDate: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      runtime: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       watchStatus: {
-        allowNull: false,
         type: Sequelize.STRING(20)
       },
-      moviePoster: {
-        type: Sequelize.STRING
-      },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       }
     });

@@ -5,21 +5,42 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING(255)
     },
-    genreId: {
-      allowNull: false,
-      type: DataTypes.INTEGER
+    posterPath: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    tmdbId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    genres: {
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
+    overview: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    releaseDate: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    runtime: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     watchStatus: {
-      allowNull: false,
       type: DataTypes.STRING(20)
     },
-    moviePoster: {
-      type: DataTypes.STRING
+    createdAt: {
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      type: DataTypes.DATE
     }
   }, {});
   Movie.associate = function(models) {
     // associations can be defined here
-    Movie.belongsTo(models.Genre, {foreignKey: 'genreId'});
     Movie.hasMany(models.Review, {foreignKey: 'movieId'});
     const columnMapping = {
       through: 'WatchedMovies', // This is the model name referencing the join table.
