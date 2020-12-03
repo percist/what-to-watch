@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     genres: {
-      type: DataTypes.string(50),
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     overview: {
