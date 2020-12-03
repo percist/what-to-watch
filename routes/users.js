@@ -57,7 +57,7 @@ const validateEmailAndPasswordForLogin = [
 
 // Render index
 router.get('/', asyncHandler(async(req, res) => {
-  res.render('index');
+  res.render('user');
 }));
 
 // render register page
@@ -90,7 +90,7 @@ router.post('/register', csrfProtection, validateEmailAndPassword, asyncHandler(
     user.hashedPassword = hashedPassword;
     await user.save();
     loginUser(req, res, user);
-    res.render('user');
+    res.redirect('/users');
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('register', {
@@ -115,7 +115,6 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
     email,
     password
   } = req.body;
-console.log('1??????????')
   let errors = [];
   const validatorErrors = validationResult(req);
 
@@ -124,7 +123,6 @@ console.log('1??????????')
 
     if (user !== null) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
-      console.log('2!!!!!!!')
 
       if (passwordMatch) {
         loginUser(req, res, user);
