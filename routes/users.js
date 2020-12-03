@@ -126,7 +126,7 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
 
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.render('user');
+        return res.redirect('/users');
       }
     }
 
@@ -135,12 +135,14 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
     errors = validatorErrors.array().map((error) => error.msg);
   }
 
-  res.render('login', {
-    title: 'Login',
-    email,
-    errors,
-    csrfToken: req.csrfToken()
-  });
+  res.redirect('/users');
+ // TODO: Do we need to pass the csrf token at this point?
+  // res.render('login', {
+  //   title: 'Login',
+  //   email,
+  //   errors,
+  //   csrfToken: req.csrfToken()
+  // });
 
 }));
 
