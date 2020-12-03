@@ -69,7 +69,7 @@ router.get('/register', csrfProtection, asyncHandler(async(req, res) => {
   });
 }));
 // Create a new user
-router.post('/register', csrfProtection, asyncHandler(async (req, res) => {
+router.post('/register', csrfProtection, validateEmailAndPassword, asyncHandler(async (req, res) => {
   const {
     firstName,
     lastName,
