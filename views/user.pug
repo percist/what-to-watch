@@ -1,1 +1,10 @@
 extends layout.pug
+block content
+  div(class="sidebar") 
+    div: a(href='/watchlist') Watched
+    div: a(href='/watchlist') Want to Watch
+    div(class='movies-by') Movies by:
+    div: a(href='/movies') Genre
+    div: a(href='/movies') Alphabetical order
+    div: a(href='/movies') Order added
+    div: a(href='/movies') Random
