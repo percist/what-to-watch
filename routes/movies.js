@@ -12,9 +12,17 @@ const { getMaxListeners } = require('../app');
 // }
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-  const movie = await db.Movie.findByPk(id)
+  const movieId = parseInt(req.params.id, 10);
+
+  const movie = await db.Movie.findByPk(movieId)
+  const reviews = await db.Reviews.findall({
+    where: {
+      movieId
+    }
+  })
 
   res.render('movie-results', { 
+    reviews,
     title: movie.title, 
     poster: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
     releaseDate: movie.release_date,

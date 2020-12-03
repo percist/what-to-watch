@@ -1,3 +1,6 @@
 extends layout
 block content
   h1 im a review form?
+  form(action='/users/register', method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +field('First Name', 'firstName', user.firstName)
