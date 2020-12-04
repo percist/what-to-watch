@@ -8,11 +8,15 @@ module.exports = (sequelize, DataTypes) => {
     movieId: {
       allowNull: false,
       type: DataTypes.INTEGER
+    },
+    watchStatus: {
+      allowNull: false,
+      type: DataTypes.STRING
     }
   }, {});
   WatchedMovie.associate = function(models) {
     
-    WatchedMovie.belongsTo(models.Watchlist, {foreignKey: 'watchlistId'});
+    WatchedMovie.belongsTo(models.Watchlist, {foreignKey: 'watchListId'});
     WatchedMovie.belongsTo(models.Movie, {foreignKey: 'movieId'});
 
   };

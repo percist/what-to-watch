@@ -35,9 +35,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      watchStatus: {
-        type: Sequelize.STRING(20)
-      },
       createdAt: {
         type: Sequelize.DATE
       },

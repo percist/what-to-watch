@@ -1,3 +1,23 @@
 extends layout
 
 block content
+  if wantToWatch && wantToWatch.length > 0
+    table(class='table')
+      thead
+        tr
+          th(scope='col') poster
+          th(scope='col') title
+          th(scope='col') rating
+          th(scope='col') genre
+          th(scope='col') watch status
+      tbody
+        each movie in movies
+          tr
+            td= poster
+            td= rating
+            td= genres
+            td= watchStatus
+            td
+              a(class='btn' href=`ajaxsomething` role='button') TOGGLER!
+  else
+    p: em You don't have any movies on your Want to Watch list!
