@@ -35,7 +35,7 @@ router.get('/want', asyncHandler(async(req, res) => {
   console.log(movies);  
   res.render('watchlist', {
     movies,
-    poster: `https://image.tmdb.org/t/p/original/${movie.posterPath}`,
+  
     
   });
 
@@ -61,8 +61,6 @@ router.get('/watched', asyncHandler(async(req, res) => {
   console.log(movies);  
   res.render('watchlist', {
     movies,
-    poster: `https://image.tmdb.org/t/p/original/${movie.posterPath}`,
-    
   });
 
 }));
