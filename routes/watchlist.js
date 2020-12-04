@@ -42,7 +42,34 @@ router.get('/want', asyncHandler(async(req, res) => {
 }));
 
 
-router.get('/want', asyncHandler(async(req, res) => {}));
+router.get('/watched', asyncHandler(async(req, res) => {
+  const object = {
+    include: [{
+      model: db.Watchlist,
+      where: {
+        userId: 1,
+      },
+      through: {
+        where: {
+          watchStatus: 'watched'
+        }
+      }
+    }]
+  }
+  const movies = await db.Movie.findAll(object);
+
+  console.log(movies);  
+  res.render('watchlist', {
+    movies,
+    poster: `https://image.tmdb.org/t/p/original/${movie.posterPath}`,
+    
+  });
+
+}));
+
+
+
+
 
 
 
