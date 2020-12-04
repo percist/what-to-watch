@@ -32,12 +32,14 @@ router.get(
         id: req.params.id,
       },
     });
+    const user = res.locals.user;
+    console.log(user)
 
     const object = {
       include: [{
         model: db.Watchlist,
         where: {
-          userId: res.locals.user,
+          userId: user,
         },
         through: {
           where: {
@@ -53,7 +55,6 @@ router.get(
 
     const isWatched = watchedMovies.find(watchedMovie => watchedMovie === movie.id); 
   
-    const user = res.locals.user.id;
     // TODO movie.foreignKeys to connect user to movie
     if (isWatched) {
       // This is where we render our review page and pass in the movieId
