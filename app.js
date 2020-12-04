@@ -14,6 +14,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const reviewsRouter = require('./routes/reviews');
 const moviesRouter = require('./routes/movies');
+const watchlistsRouter = require('./routes/watchlist');
 const apiRouter = require('./routes/api');
 
 const app = express();
@@ -44,6 +45,7 @@ store.sync();
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 app.use('/movies/reviews', reviewsRouter);
 app.use('/movies', moviesRouter);
 app.use('/api', apiRouter);
