@@ -25,6 +25,32 @@ router.get('/want', asyncHandler(async(req, res) => {
       },
       through: {
         where: {
+          watchStatus: 'want'
+        }
+      }
+    }]
+  }
+  const movies = await db.Movie.findAll(object);
+
+  console.log(movies);  
+  res.render('watchlist', {
+    movies,
+  
+    
+  });
+
+}));
+
+
+router.get('/watched', asyncHandler(async(req, res) => {
+  const object = {
+    include: [{
+      model: db.Watchlist,
+      where: {
+        userId: 1,
+      },
+      through: {
+        where: {
           watchStatus: 'watched'
         }
       }
@@ -34,17 +60,14 @@ router.get('/want', asyncHandler(async(req, res) => {
 
   console.log(movies);  
   res.render('watchlist', {
-    poster: `https://image.tmdb.org/t/p/original/${movie.posterPath}`,
-    title: movie.title,
-    rating: movie.stars,
-    genres: movie.genres,
-    watchStatus: movie.WatchedMovie.watchListId
+    movies,
   });
 
 }));
 
 
-router.get('/want', asyncHandler(async(req, res) => {}));
+
+
 
 
 
