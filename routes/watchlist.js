@@ -71,6 +71,7 @@ router.get('/watched', asyncHandler(async(req, res) => {
 
 
 
+
 router.get('/home', asyncHandler(async(req, res) => {
   // const moviesToWatch = await //get list of movies on watchlist
   res.render('watchlist', {title: 'Want to Watch'});
@@ -80,6 +81,39 @@ router.get('/home', asyncHandler(async(req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+// window.addEventListener('DOMContentLoaded', () => {
+
+  
+//   const watchStatusButton = document.querySelector("watchToggler");
+//   watchStatusButton.addEventListener("click", async (e) => {
+//     // api returning json vs html
+    
+//     console.log('CLIK')
+    
+//     const res = await fetch(`http://localhost8080/users/want`, {
+//       method: 'PATCH',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({})
+      
+//     })
+    
+//     console.log(res);
+    
+//   })
+  
+  
+// })
 
 
 module.exports = router;
