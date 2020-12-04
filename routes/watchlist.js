@@ -25,15 +25,22 @@ router.get('/want', asyncHandler(async(req, res) => {
       },
       through: {
         where: {
-          watchStatus: 'want'
+          watchStatus: 'watched'
         }
       }
     }]
   }
-  const movies = await db.Movie.findAll(object);  
+  const movies = await db.Movie.findAll(object);
+
+  console.log(movies);  
   res.render('watchlist', {
-   movies
+    poster: `https://image.tmdb.org/t/p/original/${movie.posterPath}`,
+    title: movie.title,
+    rating: movie.stars,
+    genres: movie.genres,
+    watchStatus: movie.WatchedMovie.watchListId
   });
+
 }));
 
 
