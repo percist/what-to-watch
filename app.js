@@ -15,6 +15,7 @@ const usersRouter = require('./routes/users');
 const reviewsRouter = require('./routes/reviews');
 const moviesRouter = require('./routes/movies');
 const watchlistsRouter = require('./routes/watchlist');
+const apiRouter = require('./routes/api');
 
 const app = express();
 
@@ -44,9 +45,10 @@ store.sync();
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use(reviewsRouter);
-app.use(moviesRouter);
-app.use('/users', watchlistsRouter);
+
+app.use('/movies/reviews', reviewsRouter);
+app.use('/movies', moviesRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
