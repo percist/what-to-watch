@@ -14,10 +14,10 @@ block content
       tbody
         each movie in movies
           tr
-            td= poster
-            td= rating
-            td= genres
-            td= watchStatus
+            td: img(src= `https://image.tmdb.org/t/p/original${movie.posterPath}`)
+            td= movie.title
+            td= movie.rating
+            td= movie.genres
             td
               a(class='btn' href=`ajaxsomething` role='button') TOGGLER!
   else

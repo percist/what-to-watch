@@ -25,7 +25,7 @@ router.get('/want', asyncHandler(async(req, res) => {
       },
       through: {
         where: {
-          watchStatus: 'watched'
+          watchStatus: 'want'
         }
       }
     }]
@@ -34,11 +34,9 @@ router.get('/want', asyncHandler(async(req, res) => {
 
   console.log(movies);  
   res.render('watchlist', {
+    movies,
     poster: `https://image.tmdb.org/t/p/original/${movie.posterPath}`,
-    title: movie.title,
-    rating: movie.stars,
-    genres: movie.genres,
-    watchStatus: movie.WatchedMovie.watchListId
+    
   });
 
 }));

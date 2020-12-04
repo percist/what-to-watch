@@ -33,7 +33,7 @@ router.get(
   
     const user = res.locals.user.id;
     // TODO movie.foreignKeys to connect user to movie
-    if (user !== movie.) {
+    if (user !== movie) {
       const err = new Error('Unauthorized');
       err.status = 401;
       err.message = 'You are not authorized to review this movie.';
