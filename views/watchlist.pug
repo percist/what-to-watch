@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1 hello user
-  if movies && movies.length >= 0
+  if wantToWatch && wantToWatch.length > 0
     table(class='table')
       thead
         tr
@@ -14,10 +14,10 @@ block content
       tbody
         each movie in movies
           tr
-            td: img(src= `https://image.tmdb.org/t/p/original${movie.posterPath}`)
-            td= movie.title
-            td= movie.rating
-            td= movie.genres
+            td= poster
+            td= rating
+            td= genres
+            td= watchStatus
             td
               a(class='btn' href=`ajaxsomething` role='button') TOGGLER!
   else
