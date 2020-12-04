@@ -28,9 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    watchStatus: {
-      type: DataTypes.STRING(20)
-    },
     createdAt: {
       type: DataTypes.DATE
     },
