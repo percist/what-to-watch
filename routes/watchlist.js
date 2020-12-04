@@ -17,15 +17,20 @@ const db = require('../db/models');
 
 
 router.get('/want', asyncHandler(async(req, res) => {
-  const movies = await db.Movie.findAll({
+  const object = {
     include: [{
-      model: db.WatchedMovie,
+      model: db.Watchlist,
       where: {
-        userId: res.locals.userId,
-        watchStatus: 'want'
+        userId: 1,
+      },
+      through: {
+        where: {
+          watchStatus: 'watched'
+        }
       }
     }]
-  });
+  }
+  const movies = await db.Movie.findAll(object);
 
   console.log(movies);  
   res.render('watchlist', {
@@ -42,7 +47,8 @@ router.get('/want', asyncHandler(async(req, res) => {
 router.get('/want', asyncHandler(async(req, res) => {}));
 
 
-router.get('/', asyncHandler(async(req, res) => {
+
+router.get('/home', asyncHandler(async(req, res) => {
   // const moviesToWatch = await //get list of movies on watchlist
   res.render('watchlist', {title: 'Want to Watch'});
 }));
