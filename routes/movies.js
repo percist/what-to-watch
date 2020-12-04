@@ -39,7 +39,7 @@ router.get(
       include: [{
         model: db.Watchlist,
         where: {
-          userId: user,
+          userId: user.id,
         },
         through: {
           where: {
@@ -49,11 +49,11 @@ router.get(
       }]
     }
     const watchedMovies = await db.Movie.findAll(object);
-
+    console.log(watchedMovies)
     // Iterate through the watchedMovies array and check each watchedMovies id key to see
     // if it's the same as movie.id
 
-    const isWatched = watchedMovies.find(watchedMovie => watchedMovie === movie.id); 
+    const isWatched = watchedMovies.find(watchedMovie => watchedMovie.dataValues.id === movie.id); 
   
     // TODO movie.foreignKeys to connect user to movie
     if (isWatched) {
