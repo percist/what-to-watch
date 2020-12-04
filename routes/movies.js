@@ -3,9 +3,11 @@ const { check, validationResult } = require('express-validator')
 const { asyncHandler, handleValidationErrors, csrfProtection } = require('../utils')
 const router = express.Router();
 const reviewsRouter = require('./reviews');
+const {restoreUser} = require('../auth');
 
 const db = require('../db/models');
 const { getMaxListeners } = require('../app');
+const watchedmovie = require('../db/models/watchedmovie');
 
 
 // async function getAllMovies() {
@@ -23,26 +25,45 @@ const movieNotFoundError = (id) => {
 router.use('/movies/reviews', reviewsRouter);
 
 router.get(
-  '/:id(\\d+)/reviews/new',
+  '/:id(\\d+)/reviews/new', restoreUser,
   asyncHandler(async (req, res, next) => {
     const movie = await db.Movie.findOne({
       where: {
         id: req.params.id,
       },
     });
+
+    const object = {
+      include: [{
+        model: db.Watchlist,
+        where: {
+          userId: res.locals.user,
+        },
+        through: {
+          where: {
+            watchStatus: 'watched'
+          }
+        }
+      }]
+    }
+    const watchedMovies = await db.Movie.findAll(object);
+
+    // Iterate through the watchedMovies array and check each watchedMovies id key to see
+    // if it's the same as movie.id
+
+    const isWatched = watchedMovies.find(watchedMovie => watchedMovie === movie.id); 
   
     const user = res.locals.user.id;
     // TODO movie.foreignKeys to connect user to movie
-    if (user !== movie) {
+    if (isWatched) {
+      // This is where we render our review page and pass in the movieId
+      res.render('new-review', {movieId: movie.id});
+    } else {
       const err = new Error('Unauthorized');
       err.status = 401;
       err.message = 'You are not authorized to review this movie.';
       err.title = 'Unauthorized';
       throw err;
-    }
-    if (movie) {
-      // This is where we render our review page and pass in the movieId
-      res.render('new-review', {movieId: movie.id});
     }
   })
 );
