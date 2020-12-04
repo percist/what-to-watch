@@ -4,10 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     watchListId: {
       allowNull: false,
       type: DataTypes.INTEGER,
+      references: { model: 'Watchlist', key: 'watchListId' }
     },
     movieId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: { model: 'Movie', key: 'movieId' }
     },
     watchStatus: {
       allowNull: false,
