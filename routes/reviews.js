@@ -6,6 +6,10 @@ const router = express.Router();
 
 const db = require('../db/models');
 
+router.get('/', csrfProtection, asyncHandler(async(req, res) => {
+    
+    res.render('new-review', { csrfToken: req.csrfToken(), })
+}));
 
 router.post('/movies/review', (req, res) => {
   
