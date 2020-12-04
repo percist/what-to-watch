@@ -44,6 +44,7 @@ router.get('/want', asyncHandler(async(req, res) => {
 }));
 
 
+router.get('/want', asyncHandler(async(req, res) => {}));
 
 
 

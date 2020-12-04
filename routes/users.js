@@ -74,14 +74,19 @@ router.post('/register', csrfProtection, validateEmailAndPassword, asyncHandler(
     firstName,
     lastName,
     email,
-    password
+    password,
   } = req.body;
 
-  const user = db.User.build({
+  const user = await db.User.build({
     firstName,
     lastName,
     email
   });
+
+  const watchlist = db.Watchlist.build({
+    userId: user.id
+    
+  })
 
   const validatorErrors = validationResult(req);
 
