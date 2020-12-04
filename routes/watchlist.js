@@ -41,7 +41,7 @@ router.get('/want', asyncHandler(async(req, res) => {
 
 
 
-router.get('/want', asyncHandler(async(req, res) => {
+
 
 router.get('/', asyncHandler(async(req, res) => {
   // const moviesToWatch = await //get list of movies on watchlist
