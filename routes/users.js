@@ -83,10 +83,7 @@ router.post('/register', csrfProtection, validateEmailAndPassword, asyncHandler(
     email
   });
 
-  const watchlist = db.Watchlist.build({
-    userId: user.id
-    
-  })
+  
 
   const validatorErrors = validationResult(req);
 
@@ -94,6 +91,14 @@ router.post('/register', csrfProtection, validateEmailAndPassword, asyncHandler(
     const hashedPassword = await bcrypt.hash(password, 10);
     user.hashedPassword = hashedPassword;
     await user.save();
+    const newUser = await db.User.findOne({
+      where: {
+        email
+      }
+    })
+    const watchlist = await db.Watchlist.create({
+      userId: newUser.id
+    })
     loginUser(req, res, user);
     res.redirect('/users');
   } else {
