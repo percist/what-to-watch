@@ -18,7 +18,7 @@ for (let i = 0; i < 50; i++) {
           title: json.title,
           posterPath: json.poster_path,
           tmdbId: json.id,
-          genres: json.genres[0].name,
+          genres: json.genres,
           overview: json.overview,
           releaseDate: json.release_date,
           runtime: json.runtime
