@@ -3,7 +3,7 @@ const { check, validationResult } = require('express-validator')
 const { asyncHandler, handleValidationErrors, csrfProtection } = require('../utils')
 const router = express.Router();
 const reviewsRouter = require('./reviews');
-const {restoreUser} = require('../auth');
+const { restoreUser } = require('../auth');
 
 const db = require('../db/models');
 const { getMaxListeners } = require('../app');
@@ -33,7 +33,6 @@ router.get(
       },
     });
     const user = res.locals.user;
-    console.log(user)
 
     const object = {
       include: [{
@@ -49,16 +48,15 @@ router.get(
       }]
     }
     const watchedMovies = await db.Movie.findAll(object);
-    console.log(watchedMovies)
     // Iterate through the watchedMovies array and check each watchedMovies id key to see
     // if it's the same as movie.id
 
-    const isWatched = watchedMovies.find(watchedMovie => watchedMovie.dataValues.id === movie.id); 
-  
+    const isWatched = watchedMovies.find(watchedMovie => watchedMovie.dataValues.id === movie.id);
+
     // TODO movie.foreignKeys to connect user to movie
     if (isWatched) {
       // This is where we render our review page and pass in the movieId
-      res.render('new-review', {movieId: movie.id, csrfToken: req.csrfToken()});
+      res.render('new-review', { movieId: movie.id, csrfToken: req.csrfToken() });
     } else {
       const err = new Error('Unauthorized');
       err.status = 401;
@@ -79,41 +77,31 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     }
   })
 
-  res.render('movie', { 
+  res.render('movie', {
     movieId: movie.id,
     reviews,
-    title: movie.title, 
+    title: movie.title,
     poster: `https://image.tmdb.org/t/p/original${movie.posterPath}`,
     releaseDate: movie.releaseDate,
     runtime: movie.runtime,
     genres: movie.genres,
-    overview: movie.overview  
+    overview: movie.overview
   })
 }));
 
-router.post('/:id(\\d+)/reviews/new', csrfProtection, asyncHandler(async(req, res) => {
-  const review = req.params.movieReview;
-  const stars = parseInt(req.params.rating, 10);
-  // console.log(req.params.movieReview);
-  console.log(req.body.movieReview);
-  // const {
-  //   review,
-  //   stars
-  // } = req.body;
-
-  // const reviewToCreate = await db.Review.create({
-  //   review,
-  //   stars
-  // });
-
-  // const book = {
-  //   title,
-  //   author,
-  //   releaseDate,
-  //   pageCount,
-  //   publisher,
-  // };
-
+router.post('/:id(\\d+)/reviews/new', csrfProtection, restoreUser, asyncHandler(async (req, res) => {
+ 
+  const review = req.body.movieReview;
+  const stars = parseInt(req.body.rating, 10);
+  const userId = req.session.auth.userId;
+  const movieId = parseInt(req.params.id, 10);
+  
+  await db.Review.create({
+    stars,
+    review,
+    userId,
+    movieId
+  });
   // const validatorErrors = validationResult(req);
 
   // if (validatorErrors.isEmpty()) {
@@ -121,9 +109,23 @@ router.post('/:id(\\d+)/reviews/new', csrfProtection, asyncHandler(async(req, re
   //   res.redirect('/');
   // } else {
   //   const errors = validatorErrors.array().map((error) => error.msg);
-    res.render('movie', {
-      csrfToken: req.csrfToken(),
-    });
+  const movie = await db.Movie.findByPk(movieId)
+  const reviews = await db.Review.findAll({
+    where: {
+      movieId
+    }
+  })
+  res.render('movie', {
+    movieId: movie.id,
+    reviews,
+    title: movie.title,
+    poster: `https://image.tmdb.org/t/p/original${movie.posterPath}`,
+    releaseDate: movie.releaseDate,
+    runtime: movie.runtime,
+    genres: movie.genres,
+    overview: movie.overview,
+    csrfToken: req.csrfToken(),
+  });
 }));
 
 
