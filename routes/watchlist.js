@@ -57,8 +57,6 @@ router.get('/watched', asyncHandler(async(req, res) => {
     }]
   }
   const movies = await db.Movie.findAll(object);
-
-  console.log(movies);  
   res.render('watchlist', {
     movies,
   });

@@ -3,22 +3,21 @@ window.addEventListener("load", (event)=>{
     // TODO three buttons: watch want to watch remove with ajax
     
     
-    const watchStatusButton = document.querySelector("watchToggler");
+    const watchStatusButton = document.querySelector(".watchToggler");
     watchStatusButton.addEventListener("click", async (e) => {
         // api returning json vs html
-    
-        console.log('CLIK')
-    
-        const res = await fetch(`http://localhost8080/users/want`, {
-            method: 'PATCH',
+        
+        
+        const res = await fetch(`https://localhost8080/api`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({  })
+            // body: JSON.stringify()
             
         })
-    
-        console.log(res);
+       
+        // console.log(JSON.stringify(res))
     
     })
     
