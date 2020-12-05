@@ -13,7 +13,6 @@ const db = require('../db/models');
 // if watchlists are empty have a message saying "You don't have anything on your Watchlists :( Start browsing movies!"
 
 
-//`https://image.tmdb.org/t/p/original/${movie.poster_path}`
 
 
 router.get('/want', asyncHandler(async(req, res) => {
@@ -32,7 +31,40 @@ router.get('/want', asyncHandler(async(req, res) => {
   }
   const movies = await db.Movie.findAll(object);
 
-  console.log(movies);  
+  // console.log(movies);
+  // console.log(movies.genres);
+
+  const movie = movies[0];
+
+  const movieId = movie.id;
+
+
+  const watchlist = await db.Watchlist.findAll( {
+    where: {userId: 1}
+  })
+
+  // console.log(watchlist[0].userId);
+  const specific = watchlist[0].id;
+
+  const status = await db.WatchedMovie.findAll({
+    where: { watchListId: specific}
+
+  })
+
+
+  
+  let watchStatusUpdate = status[0].watchStatus;
+
+
+  watchStatusUpdate = 'watched';
+  
+  console.log(watchStatusUpdate + '*******************************');
+
+
+
+
+
+  // console.log(movies);  
   res.render('watchlist', {
     movies,
   
@@ -40,6 +72,78 @@ router.get('/want', asyncHandler(async(req, res) => {
   });
 
 }));
+
+//THIS IS A TEST
+router.get('/api/want', asyncHandler(async(req, res) => {
+  const object = {
+    include: [{
+      model: db.Watchlist,
+      where: {
+        userId: 1,
+      },
+      through: {
+        where: {
+          watchStatus: 'want'
+        }
+      }
+    }]
+  }
+  const movies = await db.Movie.findAll(object);
+  const movie = movies[0];
+  const movieId = movie.id;
+  const watchlist = await db.Watchlist.findAll({
+    where: { userId: 1 }
+  })
+  // console.log(watchlist[0].userId);
+  const specific = watchlist[0].id;
+  const status = await db.WatchedMovie.findAll({
+    where: { watchListId: specific }
+  });
+
+  let watchStatusUpdate = status[0].watchStatus;
+  // watchStatusUpdate = 'watched';
+  // console.log(watchStatusUpdate + '*******************************');
+
+  res.json(watchStatusUpdate);
+}));
+
+
+router.patch('/api/want', asyncHandler(async(req, res) => {
+  const object = {
+    include: [{
+      model: db.Watchlist,
+      where: {
+        userId: 1,
+      },
+      through: {
+        where: {
+          watchStatus: 'want'
+        }
+      }
+    }]
+  }
+  const movies = await db.Movie.findAll(object);
+  const movie = movies[0];
+  const movieId = movie.id;
+  const watchlist = await db.Watchlist.findAll({
+    where: { userId: 1 }
+  })
+  // console.log(watchlist[0].userId);
+  const specific = watchlist[0].id;
+  const status = await db.WatchedMovie.findAll({
+    where: { watchListId: specific }
+  });
+
+  let watchStatusUpdate = status[0].watchStatus;
+  // watchStatusUpdate = 'watched';
+  // console.log(watchStatusUpdate + '*******************************');
+
+  await watchStatusUpdate.update('watched')
+  res.json(watchStatusUpdate);
+
+}))
+
+
 
 
 router.get('/watched', asyncHandler(async(req, res) => {
