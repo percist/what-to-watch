@@ -34,8 +34,7 @@ document.addEventListener("DOMContentLoaded", async (event)=>{
 
     
     
-    const wantToWatchButton = document.querySelectorAll('.want-to-watch')
-    const watchedButton = document.querySelectorAll('.watched')
+    const watchedButton = document.querySelectorAll('.watchToggler')
     
 
 
