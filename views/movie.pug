@@ -10,16 +10,13 @@ block content
                     li=releaseDate
                     li=overview
             div
-                //- todo Watched Button PUT
-                form(class='form-inline ' action='/movies/watched' method='put')
-                    button(class='btn navbar-links' id='watched' type='submit') Watched
-                    //- todo Want to Watch Button PUT
-                form(class='form-inline ' action='/movies/want-to-watch' method='put')
-                    button(class='btn navbar-links' id='want-to-watch' type='submit') Want to Watch
+                        //- todo Watched Button PUT
+                        //- form(class='form-inline ' action='/movies/watched' method='put')
+            button(class='btn watchToggler' type='submit') Want to Watch
             div
                 //- todo Write a Reveiw button GET movies/review form
                 form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')
-                    button(class='btn navbar-links' id='review' type='submit') Write a Review
+                    button(class='btn watchToggler' id='review' type='submit') Write a Review
             div
             div(class="movie-reviews")
                 //- TODO display review if there is one. Display a messgae indicating you are 
