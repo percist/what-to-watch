@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1 Review this movie
-  form(action='/movies/review', method='post')
+  form(action=`/movies/${movieId}/reviews/new`, method='post')
     div.stars
       fieldset.rating
         input#star5(type='radio' name='rating' value='5')
