@@ -25,7 +25,7 @@ const movieNotFoundError = (id) => {
 router.use('/movies/reviews', reviewsRouter);
 
 router.get(
-  '/:id(\\d+)/reviews/new', restoreUser,
+  '/:id(\\d+)/reviews/new', csrfProtection, restoreUser,
   asyncHandler(async (req, res, next) => {
     const movie = await db.Movie.findOne({
       where: {
@@ -58,7 +58,7 @@ router.get(
     // TODO movie.foreignKeys to connect user to movie
     if (isWatched) {
       // This is where we render our review page and pass in the movieId
-      res.render('new-review', {movieId: movie.id});
+      res.render('new-review', {movieId: movie.id, csrfToken: req.csrfToken()});
     } else {
       const err = new Error('Unauthorized');
       err.status = 401;
@@ -91,9 +91,40 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
   })
 }));
 
-router.post('/review', (req, res) => {
-  
-});
+router.post('/:id(\\d+)/reviews/new', csrfProtection, asyncHandler(async(req, res) => {
+  const review = req.params.movieReview;
+  const stars = parseInt(req.params.rating, 10);
+  // console.log(req.params.movieReview);
+  console.log(req.body.movieReview);
+  // const {
+  //   review,
+  //   stars
+  // } = req.body;
+
+  // const reviewToCreate = await db.Review.create({
+  //   review,
+  //   stars
+  // });
+
+  // const book = {
+  //   title,
+  //   author,
+  //   releaseDate,
+  //   pageCount,
+  //   publisher,
+  // };
+
+  // const validatorErrors = validationResult(req);
+
+  // if (validatorErrors.isEmpty()) {
+  //   await bookToUpdate.update(book);
+  //   res.redirect('/');
+  // } else {
+  //   const errors = validatorErrors.array().map((error) => error.msg);
+    res.render('movie', {
+      csrfToken: req.csrfToken(),
+    });
+}));
 
 
 
