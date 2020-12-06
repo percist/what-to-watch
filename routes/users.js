@@ -69,7 +69,7 @@ router.get('/register', csrfProtection, asyncHandler(async(req, res) => {
   });
 }));
 // Create a new user
-router.post('/register', csrfProtection, validateEmailAndPassword, asyncHandler(async (req, res) => {
+router.post('/register', restoreUser, csrfProtection, validateEmailAndPassword, asyncHandler(async (req, res) => {
   const {
     firstName,
     lastName,
@@ -100,7 +100,7 @@ router.post('/register', csrfProtection, validateEmailAndPassword, asyncHandler(
       userId: newUser.id
     })
     loginUser(req, res, user);
-    res.redirect('/users');
+    return res.render('user', { user, csrfToken: req.csrfToken() });
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('register', {

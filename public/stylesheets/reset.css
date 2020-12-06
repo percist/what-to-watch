@@ -150,7 +150,7 @@ h1 {
   text-align: center;
 }
 
-img {
+.popcorn {
   width: 65px;
   padding: 10px;
 }
@@ -205,3 +205,23 @@ h1 {
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
 
+
+
+#small-poster {
+  width: 100px;
+}
+
+.movie-poster {
+  padding: 50px;
+  width: 300px;
+}
+
+.movie-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-user {
+  text-align: right;
+}

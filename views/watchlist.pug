@@ -14,7 +14,8 @@ block content
           tr
             td
               if (movie.posterPath)
-                img(src= `https://image.tmdb.org/t/p/original${movie.posterPath}`)
+                a(href=`/movies/${movie.id}`)
+                  img(src= `https://image.tmdb.org/t/p/original${movie.posterPath}`, id="small-poster")
               else
                 p No poster for this movie
             td: a(href=`/movies/${movie.id}`) #{movie.title}
