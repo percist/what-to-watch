@@ -1,14 +1,12 @@
 extends layout
 
 block content
-  h1 hello user
   if movies && movies.length > 0
     table(class='table' id='table-id')
       thead
         tr
           th(scope='col') poster
           th(scope='col') title
-          th(scope='col') rating
           th(scope='col') genre
           th(scope='col') watch status
       tbody
@@ -19,8 +17,7 @@ block content
                 img(src= `https://image.tmdb.org/t/p/original${movie.posterPath}`)
               else
                 p No poster for this movie
-            td= movie.title
-            td= movie.rating
+            td: a(href=`/movies/${movie.id}`) #{movie.title}
             td= movie.genres
             td
               //- conditional button

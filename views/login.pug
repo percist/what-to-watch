@@ -12,11 +12,17 @@ html
     div(class='login-card')
       form(action="/users/login" method='post' class='form-group')
         input(type='hidden' name='_csrf' value=csrfToken)
-        div(class='form-row')
-          +field('Email Address: ', 'email', email )
-        div(class='form-row')
-          +field('Password: ', 'password', null, 'password')
-          button(type='submit' class='btn btn-primary') Login
-          a(href='/' class='btn btn-warning ml-2') Cancel
-      div
-        p: a(href='/users/register') Don't have an account?
+        div(class='login-card_1')
+          label(for='email' class='form-label')= 'Email Adress: '
+        div(class='login-card_2')  
+          input(type='email' id='email' name='email' class='form-label')
+        div(class='login-card_3')  
+          label(for='password' class='form-label')= 'Password: '
+        div(class='login-card_4')
+          input(type='password' id='password' name='password' value=null class='form-control')
+          div(class='login-card_5') 
+            button(type='submit' class='btn btn-primary' id='button-center') Login
+            a(href='/' class='btn btn-warning ml-2' id='button-center') Cancel
+    div  
+      p: a(href='/users/register') Don't have an account?
+      
