@@ -1,40 +1,48 @@
 const express = require('express');
 const router = express.Router();
 const { asyncHandler } = require('../utils');
+const { restoreUser } = require('../auth')
 const db = require('../db/models');
 
-router.get('/alpha-order', asyncHandler(async(req, res) => {
+router.get('/alpha-order', restoreUser, asyncHandler(async(req, res) => {
     const movies = await db.Movie.findAll({
         order: [
             ['title']
         ]
     });
+  const user = res.locals.user;
     res.render('watchlist', {
       movies,
+      user
     });
   
   }));
 
-router.get('/released', asyncHandler(async(req, res) => {
+router.get('/released', restoreUser, asyncHandler(async(req, res) => {
     const movies = await db.Movie.findAll({
         order: [
             ['releaseDate', 'DESC']
         ],
         limit: 10
     });
+  const user = res.locals.user;
     res.render('watchlist', {
       movies,
+      user
     });
   }));
 
-router.get('/random', asyncHandler(async(req, res) => {
+router.get('/random', restoreUser, asyncHandler(async(req, res) => {
   const random = Math.floor((Math.random() * 200) + 1);
   const movies = [];
   movies.push(await db.Movie.findByPk(random))
+  const user = res.locals.user;
     res.render('watchlist', {
       movies,
-    })
-    console.log(movies);
+      user
+    });
+    
+
   }));
 
 
