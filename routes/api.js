@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { asyncHandler } = require('../utils');
 const db = require('../db/models');
+const {restoreUser} = require('../auth');
+
 
 //buttons in public/js will send post/patch requests
 router.get('/', function(req, res, next) {
@@ -11,16 +13,30 @@ router.get('/', function(req, res, next) {
 
 
 
-router.put("/want", asyncHandler(async(req, res) => {
+router.put("/want", restoreUser, asyncHandler(async(req, res) => {
+
+  // const object = {
+  //   include: [{
+  //     model: db.Watchlist,
+  //     where: {
+  //       userId: user.id,
+  //     },
+  //     through: {
+  //       where: {
+  //         watchStatus: 'watched'
+  //       }
+  //     }
+  //   }]
+  // }
 
   const {status} = req.body
-  console.log(status);
+  // const stringify = JSON.stringify(status)
+  console.log(`${req.body.data}!!!!!!!!!!!!!!!!!!!`);
+  const userId = req.session.auth.userId;
 
-  // const watched = await db.WatchedMovie.findBy
+  const watched = await db.WatchedMovie.findByPk()
 
-
-
-}))
+}));
 
 
 
