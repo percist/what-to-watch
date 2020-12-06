@@ -14,7 +14,11 @@ block content
       tbody
         each movie in movies
           tr
-            td: img(src= `https://image.tmdb.org/t/p/original${movie.posterPath}`)
+            td
+              if (movie.posterPath)
+                img(src= `https://image.tmdb.org/t/p/original${movie.posterPath}`)
+              else
+                p No poster for this movie
             td= movie.title
             td= movie.rating
             td= movie.genres
