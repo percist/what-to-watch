@@ -158,5 +158,4 @@ router.post('/login', validateEmailAndPasswordForLogin, restoreUser, csrfProtect
 
 }));
 
-
 module.exports = router;
