@@ -28,7 +28,7 @@ router.get('/released', asyncHandler(async(req, res) => {
   }));
 
 router.get('/random', asyncHandler(async(req, res) => {
-  const random = Math.floor(Math.random() * 201);
+  const random = Math.floor((Math.random() * 200) + 1);
   const movies = [];
   movies.push(await db.Movie.findByPk(random))
     res.render('watchlist', {
@@ -36,7 +36,6 @@ router.get('/random', asyncHandler(async(req, res) => {
     })
     console.log(movies);
   }));
-
 
 
 
