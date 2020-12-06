@@ -147,7 +147,6 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
     errors = validatorErrors.array().map((error) => error.msg);
   }
 
-
   // res.redirect('/users');
  // TODO: Do we need to pass the csrf token at this point?
   res.render('login', {
