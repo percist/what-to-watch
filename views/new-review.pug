@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1 Review this movie
-  form(action=`/movies/${movieId}/reviews/new`, method='post')
+  form(action=`/movies/${movieId}/reviews/new`, method='post', class='review')
     div.stars
       fieldset.rating
         input#star5(type='radio' name='rating' value='5')
@@ -15,6 +15,8 @@ block content
         label.full(for='star2' title='Kinda bad - 2 stars')
         input#star1(type='radio' name='rating' value='1')
         label.full(for='star1' title='Sucks big time - 1 star')
+        input#star1(type='radio' name='rating' value='0')
+        label.full(for='star0' title='Woof - 0 stars')
         input(type='hidden' name='_csrf' value=csrfToken)
         input(type='hidden' name='movieId' value=movieId)
     div.textReview

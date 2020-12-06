@@ -1,6 +1,6 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator')
-const { loginUser, logoutUser } = require('../auth');
+const { loginUser, logoutUser, restoreUser } = require('../auth');
 const { asyncHandler, handleValidationErrors, csrfProtection} = require('../utils')
 const bcrypt = require('bcrypt')
 const router = express.Router();
@@ -120,7 +120,7 @@ router.get('/login', csrfProtection, (req, res) => {
   })
 });
 
-router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHandler(async (req, res) => {
+router.post('/login', validateEmailAndPasswordForLogin, restoreUser, csrfProtection, asyncHandler(async (req, res) => {
   const {
     email,
     password
@@ -137,8 +137,8 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
 
       if (passwordMatch) {
-        loginUser(req, res, user);
-        res.render('user', { user, csrfToken: req.csrfToken() });
+       loginUser(req, res, user);
+       return res.render('user', { user, csrfToken: req.csrfToken() });
       }
     }
 
@@ -158,9 +158,5 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
 
 }));
 
-router.post('/logout', (req, res) => {
-  logoutUser(req, res);
-  res.redirect('/');
-})
 
 module.exports = router;
