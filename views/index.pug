@@ -13,11 +13,12 @@ html
     link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   body
+    img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png')
+    h1= title
     span(class="navbar-text")          
       form(class='form-inline validation-form' action='/users/login' method='get')
         button(class='btn btn-validate' href='/users/login' type='submit') Login
       form(class='form-inline validation-form' action='/users/register' method='get')
         button(class='btn btn-validate' href='/users/register' type='submit') Register 
-    h1= title
     p Welcome to What to Watch! Please login or register to get Watching!!
 

@@ -44,13 +44,30 @@ form{
 }
 
 .form-group{
-  text-align: center;
+  display:grid;
+  grid-template-columns: repeat(5, 150px);
+  
+}
+
+.form-row{
+  grid-column: 3 / 4;
+  justify-self: stretch;
+  padding: 2px;
 }
 
 .btn{
   background-color: #b9ac99;
   color:#333333;
   font-weight: 300;
+  border-radius: 10px;
+  padding: 4px;
+  margin: 2px;
+  align-self: center;
+ }
+
+.btn:hover{
+  box-shadow: 0.3em 0.3em 0.25em -0.3em;
+  transform: translateY(-0.08em);
 }
 
 #logout{
