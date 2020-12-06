@@ -22,9 +22,8 @@ const changeWantStatus = async data => {
   const res = await fetch(`${apiurl}/want`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
+    data: JSON.stringify('This is our string')
   });
-
   return res.json();
 }
 
@@ -38,15 +37,16 @@ document.addEventListener("DOMContentLoaded", async (event)=>{
     //     console.error(err)
     // }
 
-    await changeWantStatus();
+    // await changeWantStatus();
     
     const watchedButton = document.querySelectorAll('.watchToggler')
 
     watchedButton.forEach((button, i) => {
         button.addEventListener('click', (e) => {
             if (button.innerHTML === "Watched") {
+              changeWantStatus('want');
               
-                console.log(button.innerHTML);
+               console.log(button.innerHTML);
                 button.innerHTML = "Want to Watch";
             } 
             //send a request to toggle the db status
