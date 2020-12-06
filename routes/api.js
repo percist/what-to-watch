@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { asyncHandler } = require('../utils');
+const db = require('../db/models');
 
 //buttons in public/js will send post/patch requests
 router.get('/', function(req, res, next) {
@@ -10,8 +11,34 @@ router.get('/', function(req, res, next) {
 
 
 
+router.put("/want", asyncHandler(async(req, res) => {
+
+  const {status} = req.body
+  console.log(status);
+
+  // const watched = await db.WatchedMovie.findBy
+
+
+
+}))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //THIS IS A TEST
-router.get('/api/want', asyncHandler(async (req, res) => {
+router.get('/watched', asyncHandler(async (req, res) => {
   const object = {
     include: [{
       model: db.Watchlist,
