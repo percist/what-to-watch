@@ -9,11 +9,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       stars: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       review: {
-        allowNull: false,
         type: Sequelize.TEXT
       },
       userId: {

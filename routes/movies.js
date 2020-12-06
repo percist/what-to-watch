@@ -56,18 +56,25 @@ router.get(
     // TODO movie.foreignKeys to connect user to movie
     if (isWatched) {
       // This is where we render our review page and pass in the movieId
-      res.render('new-review', { movieId: movie.id, csrfToken: req.csrfToken() });
+      res.render('new-review', { movieId: movie.id, csrfToken: req.csrfToken(), user });
     } else {
-      const err = new Error('Unauthorized');
-      err.status = 401;
-      err.message = 'You are not authorized to review this movie.';
-      err.title = 'Unauthorized';
-      throw err;
+      // const err = new Error('Unauthorized');
+      // err.status = 401;
+      // err.message = 'You are not authorized to review this movie.';
+      // err.title = 'Unauthorized';
+      // throw err;
+
+      const validatorErrors = validationResult(req);
+      let errors = [];
+      errors.push('NO BITCH')
+      errors = validatorErrors.array().map((error) => error.msg)
+      res.render('new-review', {
+        movieId: movie.id, csrfToken: req.csrfToken(), user, errors})
     }
   })
 );
 
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.get('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
 
   const movieId = parseInt(req.params.id, 10);
   const movie = await db.Movie.findByPk(movieId)
@@ -76,6 +83,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
       movieId
     }
   })
+  const user = res.locals.user;
 
   res.render('movie', {
     movieId: movie.id,
@@ -85,7 +93,8 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     releaseDate: movie.releaseDate,
     runtime: movie.runtime,
     genres: movie.genres,
-    overview: movie.overview
+    overview: movie.overview,
+    user
   })
 }));
 
@@ -102,6 +111,7 @@ router.post('/:id(\\d+)/reviews/new', csrfProtection, restoreUser, asyncHandler(
     userId,
     movieId
   });
+  const user = res.locals.user;
   // const validatorErrors = validationResult(req);
 
   // if (validatorErrors.isEmpty()) {
@@ -125,6 +135,7 @@ router.post('/:id(\\d+)/reviews/new', csrfProtection, restoreUser, asyncHandler(
     genres: movie.genres,
     overview: movie.overview,
     csrfToken: req.csrfToken(),
+    user
   });
 }));
 

@@ -31,6 +31,7 @@ router.get('/want', restoreUser, asyncHandler(async(req, res) => {
   const movies = await db.Movie.findAll(object);
   res.render('watchlist', {
     movies,
+    user
   });
 
 }));
@@ -54,6 +55,7 @@ router.get('/watched', restoreUser, asyncHandler(async(req, res) => {
   const movies = await db.Movie.findAll(object);
   res.render('watchlist', {
     movies,
+    user
   });
 
 }));
