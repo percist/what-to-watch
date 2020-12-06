@@ -87,6 +87,10 @@ h1 {
   padding: 8px;
 }
 
+.movie-container-1, .review {
+  margin-left: 200px;
+}
+
 #table-id {
   margin-left: 200px;
 }
