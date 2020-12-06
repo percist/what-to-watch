@@ -89,6 +89,11 @@ a {
   
 }
 
+.empty{
+  margin-left: 200px;
+  margin-top: 50px;
+}
+
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
 body, header, nav {
   /* background-color: brown; */
@@ -132,6 +137,7 @@ h1 {
   overflow-x: hidden;
   padding: 20px;
 }
+
 
 .sidebar a {
   padding: 6px 8px 6px 8px;
