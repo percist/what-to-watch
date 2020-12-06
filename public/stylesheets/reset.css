@@ -38,22 +38,25 @@ a {
   color: white;
 }
 
-form{
+
+
+.login-card{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
   background-color:#F4F1EA;
-  /* color:#333333; */
+
 }
 
 .form-group{
-  display:grid;
-  grid-template-columns: repeat(5, 150px);
+  grid-column: 3 / 4  ;
   
 }
 
-.form-row{
-  grid-column: 3 / 4;
-  justify-self: stretch;
-  padding: 2px;
+.form-label {
+  grid-column: 2 / 3;
 }
+
 
 .btn{
   background-color: #b9ac99;
@@ -62,12 +65,18 @@ form{
   border-radius: 10px;
   padding: 4px;
   margin: 2px;
-  align-self: center;
+  
  }
+
 
 .btn:hover{
   box-shadow: 0.3em 0.3em 0.25em -0.3em;
   transform: translateY(-0.08em);
+}
+
+#button-center{
+  grid-template-columns: repeat(5, 150px);
+  grid-column: 4 / 5;
 }
 
 #logout{
@@ -135,10 +144,7 @@ h1 {
   padding: 10px;
 }
 
-.login-card {
-  padding: 10px;
-  
-}
+
 
 .py-4 {
   text-align: center;
@@ -197,3 +203,5 @@ h1 {
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+
