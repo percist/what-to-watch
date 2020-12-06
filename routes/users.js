@@ -128,15 +128,17 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
   let errors = [];
   const validatorErrors = validationResult(req);
 
+
   if (validatorErrors.isEmpty()) {
     const user = await db.User.findOne({ where: { email } });
+    console.log(user);
 
     if (user !== null) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
 
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.redirect('/users');
+        res.render('user', { user, csrfToken: req.csrfToken() });
       }
     }
 
@@ -145,15 +147,15 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
     errors = validatorErrors.array().map((error) => error.msg);
   }
 
-  console.log()
-  res.redirect('/users');
+
+  // res.redirect('/users');
  // TODO: Do we need to pass the csrf token at this point?
-  // res.render('login', {
-  //   title: 'Login',
-  //   email,
-  //   errors,
-  //   csrfToken: req.csrfToken()
-  // });
+  res.render('login', {
+    title: 'Login',
+    email,
+    errors,
+    csrfToken: req.csrfToken()
+  });
 
 }));
 

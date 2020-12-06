@@ -18,6 +18,7 @@ html
           //- span(class='navbar-text px-4') Welcome #{user.firstName}!
           form(class='form-inline pr-4' action='/users/logout' method='post')
             button(class='btn navbar-links' id='logout' type='submit') Logout
+          p Welcome #{user.firstName}
     div(class="sidebar")
       div: a(href='/users/watchlists/want') Watched
       div: a(href='/users/watchlists/watched') Want to Watch
