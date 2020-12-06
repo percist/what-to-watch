@@ -7,20 +7,26 @@
 
 
 // const changeStatus = async() => {
-
-//     const res = await fetch('/users/api/want', {
+  //     const res = await fetch('/users/api/want', {
 //         method: 'PATCH',
 //         headers: {'Content-Type': 'application/json'},
 //         body: JSON.stringify()
 //     })
-
-
 // }
 
 
-//make want disappear and watched appear
 
+const apiurl = "http://localhost:8080/api";
 
+const changeWantStatus = async data => {
+  const res = await fetch(`${apiurl}/want`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  return res.json();
+}
 
 
 document.addEventListener("DOMContentLoaded", async (event)=>{
@@ -32,18 +38,14 @@ document.addEventListener("DOMContentLoaded", async (event)=>{
     //     console.error(err)
     // }
 
-    
+    await changeWantStatus();
     
     const watchedButton = document.querySelectorAll('.watchToggler')
-    
-
-
-
-
 
     watchedButton.forEach((button, i) => {
         button.addEventListener('click', (e) => {
             if (button.innerHTML === "Watched") {
+              
                 console.log(button.innerHTML);
                 button.innerHTML = "Want to Watch";
             } 
