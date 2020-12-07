@@ -4,6 +4,8 @@ body {
   padding: 50px;
   font: 14px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: rgba(244, 241, 234, 0.5);
+  /* width: 1145px; */
+  margin: 0 auto;
   /* color:#333333; */
 }
 
@@ -40,12 +42,14 @@ a {
 
 
 
+
 .login-card{
   display:grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto;
   background-color:#F4F1EA;
-
+  margin: 0 auto;
+  max-width: 1145px;
 }
 
 .form-group{
@@ -101,6 +105,16 @@ a {
 
 #order-selector{
   font-size: 5px;
+}
+
+#order-selector:hover{
+  background-color: #382110;
+  color: white;
+}
+
+#watch-want:hover{
+   background-color: #382110;
+   color: white;
 }
 
 .empty{

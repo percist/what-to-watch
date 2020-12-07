@@ -120,7 +120,7 @@ router.get('/login', csrfProtection, (req, res) => {
   })
 });
 
-router.post('/login', validateEmailAndPasswordForLogin, restoreUser, csrfProtection, asyncHandler(async (req, res) => {
+router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHandler(async (req, res) => {
   const {
     email,
     password

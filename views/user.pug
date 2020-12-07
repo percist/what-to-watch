@@ -1,8 +1,8 @@
 extends layout.pug
 block content
   div(class="sidebar") 
-    div: a(href='/users/watchlists/want') Watched
-    div: a(href='/users/watchlists/watched') Want to Watch
+    div(id='watch-want'): a(href='/users/watchlists/want') Watched
+    div(id='watch-want'): a(href='/users/watchlists/watched') Want to Watch
     div(class='movies-by') Movies by:
     div: a(href='/search/alpha-order') Alphabetical order
     div: a(href='/search/released') Released
