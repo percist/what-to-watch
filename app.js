@@ -51,6 +51,7 @@ app.use('/search', searchRouter);
 app.use('/movies', moviesRouter);
 app.use('/api', apiRouter);
 app.use('/users/watchlists', watchlistsRouter);
+// app.use(restoreUser());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
