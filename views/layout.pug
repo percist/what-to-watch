@@ -20,13 +20,14 @@ html
           //- span(class='navbar-text px-4') Welcome #{user.firstName}!
           //- form(class='form-inline pr-4' action='/api/logout' method='delete')
           button(class='btn navbar-links' id='logout' type='submit') Logout
+          div(class="logout-message")
           
     div(class="sidebar")
       div: a(href='/users/watchlists/want') Watched
       div: a(href='/users/watchlists/watched') Want to Watch
       div(class='movies-by') Movies by:
-      div: a(href='/search/alpha-order') Alphabetical order
-      div: a(href='/search/released') Released
-      div: a(href='/search/random') Random
-    div(class="logout-message")
+      div(id='order-selector'): a(href='/search/alpha-order') Alphabetical order
+      div(id='order-selector'): a(href='/search/released') Released
+      div(id='order-selector'): a(href='/search/random') Random 
+    
     block content

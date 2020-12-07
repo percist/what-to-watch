@@ -23,7 +23,7 @@ router.get('/released', restoreUser, asyncHandler(async(req, res) => {
         order: [
             ['releaseDate', 'DESC']
         ],
-        limit: 10
+  
     });
   const user = res.locals.user;
     res.render('watchlist', {
