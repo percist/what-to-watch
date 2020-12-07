@@ -11,14 +11,14 @@ block content
                     li=overview
             div
                         //- todo Watched Button PUT
-            form(class='form-inline ')
+            form(class='form-inline_watchList')
                 input(type='hidden' value=movieId)
                 input(type='hidden' value=user.id)
-                button(class='btn watchToggler' type='submit') Want to Watch
+                input(class='btn watchToggler' type='submit' value='Want to Watch')
             div
                 //- todo Write a Reveiw button GET movies/review form
                 form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')
-                    button(class='btn watchToggler' id='review' type='submit') Write a Review
+                    button(class='btn' id='review' type='submit') Write a Review
             div
             div(class="movie-reviews")
                 //- TODO display review if there is one. Display a messgae indicating you are 
