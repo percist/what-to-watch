@@ -29,6 +29,7 @@ router.get('/want', restoreUser, asyncHandler(async(req, res) => {
     }]
   }
   const movies = await db.Movie.findAll(object);
+  console.log(user)
   res.render('watchlist', {
     movies,
     user

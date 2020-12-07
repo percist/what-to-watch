@@ -190,6 +190,36 @@ router.post('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
 
 
 
+router.post('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
+
+  const movieId = parseInt(req.params.id, 10);
+  const user = res.locals.user
+
+  const object = {
+    include: [{
+      model: db.Watchlist,
+      where: {
+        userId: user.id,
+      },
+      through: {
+        where: {
+          // watchStatus: 'want'
+        }
+      }
+    }]
+  }
+
+  const newWatched = await db.WatchedMovie.update({
+    watchListId: user.id,
+    movieId: movieId,
+    watchStatus: 'watched',
+  })
+
+
+
+
+
+}))
 
 
 
