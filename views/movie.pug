@@ -11,8 +11,10 @@ block content
                     li=overview
             div
                         //- todo Watched Button PUT
-                        //- form(class='form-inline ' action='/movies/watched' method='put')
-            button(class='btn watchToggler' type='submit') Want to Watch
+            form(class='form-inline ')
+                input(type='hidden' value=movieId)
+                input(type='hidden' value=user.id)
+                button(class='btn watchToggler' type='submit') Want to Watch
             div
                 //- todo Write a Reveiw button GET movies/review form
                 form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')

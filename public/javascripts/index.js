@@ -1,184 +1,56 @@
-// const getWantList = async () => {
-//     const res = await fetch('/users/api/want');
-//     const { status } = await res.json();
-
-//     console.log(status);
-// }
-
-
-// const changeStatus = async() => {
-  //     const res = await fetch('/users/api/want', {
-//         method: 'PATCH',
-//         headers: {'Content-Type': 'application/json'},
-//         body: JSON.stringify()
-//     })
-// }
-
-
-
 const apiurl = "http://localhost:8080/api";
 
-const changeWantStatus = async data => {
-  const res = await fetch(`${apiurl}/want`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    data: JSON.stringify('This is our string')
-  });
-  return res.json();
+const changeWatchStatus = async data => {
+    const url = `${apiurl}/${data}`
+    console.log(url)
+    const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(data)
+    });
+    return res.json();
+}
+
+const deleteWatchStatus = async () => {
+    await fetch(`${apiurl}/want`, {
+        method: 'DELETE'
+    })
+    return res.json();
 }
 
 
-document.addEventListener("DOMContentLoaded", async (event)=>{
-    // console.log("hello from javascript!")
-    // // TODO three buttons: watch want to watch remove with ajax
-    // try {
-    //     await getWantList();
-    // } catch(err) {
-    //     console.error(err)
-    // }
+document.addEventListener("DOMContentLoaded", async (event) => {
 
-    // await changeWantStatus();
-    
-    const watchedButton = document.querySelectorAll('.watchToggler')
+    const watchedButton = document.querySelector('.watchToggler')
 
-    watchedButton.forEach((button, i) => {
-        button.addEventListener('click', (e) => {
-            if (button.innerHTML === "Watched") {
-              changeWantStatus('want');
-              
-               console.log(button.innerHTML);
-                button.innerHTML = "Want to Watch";
-            } 
-            //send a request to toggle the db status
-            else if (button.innerHTML === "Want to Watch") {
-                button.innerHTML = "Watched";
+    watchedButton.addEventListener('click', async (e) => {
+        e.preventDefault()
+        if (watchedButton.innerHTML === "Watched") {
+            try {
+                await changeWatchStatus('watched');
+                watchedButton.innerHTML = "Remove";
+            } catch (e) {
+                console.log(e)
             }
+        } else if (watchedButton.innerHTML === "Want to Watch") {
+            try {
+                await changeWatchStatus('want');
+                watchedButton.innerHTML = "Watched";
+            } catch (e) {
+                console.log(e)
+            }
+        } else if (watchedButton.innerHTML === "Remove") {
+            try {
+                await deleteWatchStatus()
+                watchedButton.innerHTML = "Want to Watch";
+            } catch (e) {
+                console.log(e)
+            }
+
+
+        }
         });
 
     })
-
-    // function hideWantToWatch(e, i) {
-    //     e.target.style.visibility = "hidden";
-    //     watchedButton[i].style.visibility = "visible";
-    // }
-
-    // function hideWatched(e) {
-    //     e.target.style.visibility = "hidden";
-    // }
-
-    // function showWantToWatch(e) {
-    //     e.target.style.visibility = "visible"
-    // }
-
-    // function showWatched(e) {
-    //     e.target.style.visibility = "visible"
-    // }
-
-
-    
-    // watchedButton.forEach((button, i) => {
-    //     button.addEventListener('click', hide, false);
-    //     wantToWatchButton[i].addEventListener('click', show, false)
-    // })
-
-
-
-
-
-
-
-
-
-/*
-
-<button class="want-to-read">Want to Read</button>
-<script>
-  document.querySelector(".want-to-read").addEventListener("click", function() {
-    fetch(`https://api.goodreads.com/books/${BOOK_ID}/update-status`, {
-      method: "PATCH", // using PATCH since we'll just be modifying the book's status
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        status: "Want to Read"
-      })
-    })
-      .then(function(res) {
-        if (!res.ok) {
-          throw Error(res.statusText); // handle any potential server errors
-        }
-        return res.json(); // extract JSON from the response
-      })
-      .then(function(data) {
-        document.querySelector(".want-to-read").innerHTML = "✓ Want To Read";
-      })
-      .catch(function(error) {
-        const errorMessage = document.createElement("p");
-      }
-        document.querySelector("body").appendChild(errorMessage);
-      });
-  });
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-    // const watchStatusButton = document.querySelector(".watchToggler");
-    // watchStatusButton.addEventListener("click", async (e) => {
-    //     // api returning json vs html
-    //     const res = await fetch(`http://localhost:8080/users/want`, {
-    //         method: 'GET',
-    //         // headers: {
-    //         //     'Content-Type': 'application/json'
-    //         // },
-    //         // body: JSON.stringify()
-            
-    //     })
-
-    //     console.log(res);
-    //     watchStatusButton.innerHTML = 'HELLO'
-    
-    // })
-    
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-})
