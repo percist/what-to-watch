@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  if movies && movies.length > 0
+    table(class='table' id='table-id')
+      thead
+        tr
+          th(scope='col') poster
+          th(scope='col') title
+          th(scope='col') genre
+          th(scope='col') watch status
+      tbody
+        each movie in movies
+          tr
+            td
+              if (movie.posterPath)
+                a(href=`/movies/${movie.id}`)
+                  img(src= `https://image.tmdb.org/t/p/original${movie.posterPath}`, id="small-poster")
+              else
+                p No poster for this movie
+            td: a(href=`/movies/${movie.id}`) #{movie.title}
+            td= movie.genres
+            td= movie.WatchedMovie.watchStatus
+              //- conditional button
+              //- a(class='btn' href=`ajaxsomething` role='button') TOGGLER!
+  else
+    p(class='empty'): em You don't have any movies on your Want to Watch list!
+  

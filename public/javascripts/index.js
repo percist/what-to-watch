@@ -1,4 +1,4 @@
-const apiurl = "http://localhost:8080/api";
+const apiurl = "/api";
 
 const changeWatchStatus = async (data, route) => {
     const url = `${apiurl}/${route}`
@@ -21,7 +21,7 @@ const deleteWatchStatus = async () => {
 }
 
 const handleLogoutClick = async () => {
-    const request = await fetch('http://localhost:8080/api/logout', {
+    const request = await fetch('/api/logout', {
         method: 'DELETE'
     })
 
@@ -45,35 +45,35 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
     //create div with html and await that and if the res.json comes back we create a div set the html to the res.json and appendchild to the body 
 
-    const watchedButton = document.querySelector('.watchToggler')
-    const form = document.querySelector('.form-inline_watchList')
+    // const watchedButton = document.querySelector('.watchToggler')
+    // const form = document.querySelector('.form-inline_watchList')
 
-    watchedButton.addEventListener('click', async (e) => {
-        e.preventDefault()
-        // console.log('below prevent default____________________-')
-        if (watchedButton.value === "Watched") {
-            try {
-                // await changeWatchStatus('watched');
-                watchedButton.setAttribute("value", 'Remove');
-            } catch (e) {
-                console.log(e)
-            }
-        } else if (watchedButton.value === "Want to Watch") {
-            try {
-                // const FD = new FormData(form)
-                watchedButton.setAttribute("value", 'Watched');
-                // await changeWatchStatus('want');
-            } catch (e) {
-                console.log(e)
-            }
-        } else if (watchedButton.value === "Remove") {
-            try {
-                // await deleteWatchStatus()
-                watchedButton.setAttribute("value", 'Want to Watch');
-            } catch (e) {
-                console.log(e)
-            }
-        }
-    });
+    // watchedButton.addEventListener('click', async (e) => {
+    //     e.preventDefault()
+    //     // console.log('below prevent default____________________-')
+    //     if (watchedButton.value === "Watched") {
+    //         try {
+    //             // await changeWatchStatus('watched');
+    //             watchedButton.setAttribute("value", 'Remove');
+    //         } catch (e) {
+    //             console.log(e)
+    //         }
+    //     } else if (watchedButton.value === "Want to Watch") {
+    //         try {
+    //             // const FD = new FormData(form)
+    //             watchedButton.setAttribute("value", 'Watched');
+    //             // await changeWatchStatus('want');
+    //         } catch (e) {
+    //             console.log(e)
+    //         }
+    //     } else if (watchedButton.value === "Remove") {
+    //         try {
+    //             // await deleteWatchStatus()
+    //             watchedButton.setAttribute("value", 'Want to Watch');
+    //         } catch (e) {
+    //             console.log(e)
+    //         }
+    //     }
+    // });
 
 })
