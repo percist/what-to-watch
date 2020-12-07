@@ -33,10 +33,12 @@ const restoreUser = async (req, res, next) => {
       }
     } catch (err) {
       res.locals.authenticated = false;
+      res.redirect('/');
       next(err);
     }
   } else {
     res.locals.authenticated = false;
+    res.redirect('/');
     next();
   }
 };
