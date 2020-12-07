@@ -141,4 +141,58 @@ router.post('/:id(\\d+)/reviews/new', csrfProtection, restoreUser, asyncHandler(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+router.post('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
+
+  const movieId = parseInt(req.params.id, 10);
+  const user = res.locals.user
+
+  const object = {
+    include: [{
+      model: db.Watchlist,
+      where: {
+        userId: user.id,
+      },
+      through: {
+        where: {
+          // watchStatus: 'want'
+        }
+      }
+    }]
+  }
+
+  const newWant = await db.WatchedMovie.create({
+    watchListId: user.id,
+    movieId: movieId,
+    watchStatus: 'want',
+  })
+
+  
+
+ 
+
+}))
+
+
+
+
+
+
+
+
+
+
 module.exports = router;
