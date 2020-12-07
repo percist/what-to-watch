@@ -25,7 +25,7 @@ const handleLogoutClick = async () => {
         method: 'DELETE'
     })
 
-   
+
 }
 
 document.addEventListener("DOMContentLoaded", async (event) => {
@@ -33,56 +33,47 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     const logoutButton = document.getElementById("logout");
     if (logoutButton) {
         logoutButton.addEventListener('click', async (e) => {
-        let data;
+            let data;
             await handleLogoutClick();
 
             logoutButton.hidden = true;
             const container = document.querySelector('.logout-message');
             container.innerHTML = "Logout Successful";
-            // const logoutMessage = document.createElement("p");
-            // logoutMessage.innerHTML = "Logout Successful";
-            // container.appendChild(logoutMessage);
-            
-
-        
-    })
+        })
     }
 
 
-//create div with html and await that and if the res.json comes back we create a div set the html to the res.json and appendchild to the body 
+    //create div with html and await that and if the res.json comes back we create a div set the html to the res.json and appendchild to the body 
 
+    const watchedButton = document.querySelector('.watchToggler')
+    const form = document.querySelector('.form-inline_watchList')
 
+    watchedButton.addEventListener('click', async (e) => {
+        e.preventDefault()
+        // console.log('below prevent default____________________-')
+        if (watchedButton.value === "Watched") {
+            try {
+                // await changeWatchStatus('watched');
+                watchedButton.setAttribute("value", 'Remove');
+            } catch (e) {
+                console.log(e)
+            }
+        } else if (watchedButton.value === "Want to Watch") {
+            try {
+                // const FD = new FormData(form)
+                watchedButton.setAttribute("value", 'Watched');
+                // await changeWatchStatus('want');
+            } catch (e) {
+                console.log(e)
+            }
+        } else if (watchedButton.value === "Remove") {
+            try {
+                // await deleteWatchStatus()
+                watchedButton.setAttribute("value", 'Want to Watch');
+            } catch (e) {
+                console.log(e)
+            }
+        }
+    });
 
-
-    // const watchedButton = document.querySelector('.watchToggler')
-    // const form = document.querySelector('.form-inline_watchList')
-
-    // watchedButton.addEventListener('click', async (e) => {
-    //     e.preventDefault()
-    //     // console.log('below prevent default____________________-')
-    //     if (watchedButton.innerHTML === "Watched") {
-    //         try {
-    //             await changeWatchStatus('watched');
-    //             watchedButton.innerHTML = "Remove";
-    //         } catch (e) {
-    //             console.log(e)
-    //         }
-    //     } else if (watchedButton.value === "Want to Watch") {
-    //         try {
-    //             const FD = new FormData(form)
-    //             watchedButton.setAttribute("value", 'Watched');
-    //             await changeWatchStatus('want');
-    //         } catch (e) {
-    //             console.log(e)
-    //         }
-    //     } else if (watchedButton.innerHTML === "Remove") {
-    //         try {
-    //             await deleteWatchStatus()
-    //             watchedButton.innerHTML = "Want to Watch";
-    //         } catch (e) {
-    //             console.log(e)
-    //         }
-    //     }
-    //     });
-
-    })
+})
