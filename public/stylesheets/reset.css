@@ -251,6 +251,11 @@ h1 {
   width: 100px;
 }
 
+#small-poster:hover{
+  box-shadow: 0.3em 0.3em 0.25em -0.3em;
+  transform: translateY(-0.08em);
+}
+
 .movie-poster {
   padding: 50px;
   width: 300px;
