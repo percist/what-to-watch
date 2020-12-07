@@ -42,6 +42,7 @@ a {
 
 
 
+
 .login-card{
   display:grid;
   grid-template-columns: repeat(5, 1fr);
@@ -90,6 +91,30 @@ a {
   box-sizing: border-box; 
   /* padding: 20px; */
   
+}
+
+.table {
+  margin-top: 50px;
+}
+
+.movies-by{
+  font-size: 20px;
+  margin-top: 50px;
+  font-weight: underline;
+}
+
+#order-selector{
+  font-size: 5px;
+}
+
+#order-selector:hover{
+  background-color: #382110;
+  color: white;
+}
+
+#watch-want:hover{
+   background-color: #382110;
+   color: white;
 }
 
 .empty{
