@@ -8,9 +8,9 @@ const changeWatchStatus = async (data, route) => {
         headers: {
             "Content-Type": "application/json"
         },
-        data: JSON.stringify(data)
+        body: JSON.stringify(data)
     });
-    return await res.json();
+    return res.json();
 }
 
 const deleteWatchStatus = async () => {
@@ -20,38 +20,69 @@ const deleteWatchStatus = async () => {
     return res.json();
 }
 
+const handleLogoutClick = async () => {
+    const request = await fetch('http://localhost:8080/api/logout', {
+        method: 'DELETE'
+    })
+
+   
+}
 
 document.addEventListener("DOMContentLoaded", async (event) => {
 
-    const watchedButton = document.querySelector('.watchToggler')
-    const form = document.querySelector('.form-inline_watchList')
+    const logoutButton = document.getElementById("logout");
+    if (logoutButton) {
+        logoutButton.addEventListener('click', async (e) => {
+        let data;
+            await handleLogoutClick();
 
-    watchedButton.addEventListener('click', async (e) => {
-        e.preventDefault()
-        // console.log('below prevent default____________________-')
-        if (watchedButton.innerHTML === "Watched") {
-            try {
-                await changeWatchStatus('watched');
-                watchedButton.innerHTML = "Remove";
-            } catch (e) {
-                console.log(e)
-            }
-        } else if (watchedButton.value === "Want to Watch") {
-            try {
-                const FD = new FormData(form)
-                watchedButton.setAttribute("value", 'Watched');
-                await changeWatchStatus(FD, 'want');
-            } catch (e) {
-                console.log(e)
-            }
-        } else if (watchedButton.innerHTML === "Remove") {
-            try {
-                await deleteWatchStatus()
-                watchedButton.innerHTML = "Want to Watch";
-            } catch (e) {
-                console.log(e)
-            }
-        }
-        });
+            logoutButton.hidden = true;
+            const container = document.querySelector('.logout-message');
+            container.innerHTML = "Logout Successful";
+            // const logoutMessage = document.createElement("p");
+            // logoutMessage.innerHTML = "Logout Successful";
+            // container.appendChild(logoutMessage);
+            
+
+        
+    })
+    }
+
+
+//create div with html and await that and if the res.json comes back we create a div set the html to the res.json and appendchild to the body 
+
+
+
+
+    // const watchedButton = document.querySelector('.watchToggler')
+    // const form = document.querySelector('.form-inline_watchList')
+
+    // watchedButton.addEventListener('click', async (e) => {
+    //     e.preventDefault()
+    //     // console.log('below prevent default____________________-')
+    //     if (watchedButton.innerHTML === "Watched") {
+    //         try {
+    //             await changeWatchStatus('watched');
+    //             watchedButton.innerHTML = "Remove";
+    //         } catch (e) {
+    //             console.log(e)
+    //         }
+    //     } else if (watchedButton.value === "Want to Watch") {
+    //         try {
+    //             const FD = new FormData(form)
+    //             watchedButton.setAttribute("value", 'Watched');
+    //             await changeWatchStatus('want');
+    //         } catch (e) {
+    //             console.log(e)
+    //         }
+    //     } else if (watchedButton.innerHTML === "Remove") {
+    //         try {
+    //             await deleteWatchStatus()
+    //             watchedButton.innerHTML = "Want to Watch";
+    //         } catch (e) {
+    //             console.log(e)
+    //         }
+    //     }
+    //     });
 
     })

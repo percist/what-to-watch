@@ -9,9 +9,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'What to Watch' });
 });
 
-router.post('/logout', (req, res) => {
-  logoutUser(req, res);
-  res.render('index', { title: 'What to Watch' });
-});
+// router.delete('/logout', (req, res) => {
+//   logoutUser(req, res);
+//   res.render('index', { title: 'What to Watch' });
+// });
 
 module.exports = router;

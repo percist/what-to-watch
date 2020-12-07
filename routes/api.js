@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { asyncHandler } = require('../utils');
 const db = require('../db/models');
-const { restoreUser } = require('../auth');
+const { restoreUser, logoutUser } = require('../auth');
+
 
 router.put('/want', restoreUser, asyncHandler(async (req, res) => {
   console.log('********* THIS IS WANTING TO WATCH SOMETHING')
@@ -34,9 +35,25 @@ router.delete('/want', restoreUser, asyncHandler(async (req, res) => {
 
 
 
+// router.get('/', function (req, res, next) {
+//   res.render('index', { title: 'What to Watch' });
+// });
+
+router.delete('/logout', (req, res) => {
+  logoutUser(req, res);
+  res.render('login', { title: 'What to Watch' });
+});
 
 
+// router.delete('/logout', restoreUser, (req, res) => {
+//   console.log(req.session.user);
+//   delete req.session.user;
+//   console.log('!!!!!!!!!!!!!!!!!!!!!');
+//   console.log(req.session.user);
+// });
 
+// we moved these two routes from the index.js file
+// want to fetch this logout route and render the login page once the button is clicked
 
 
 

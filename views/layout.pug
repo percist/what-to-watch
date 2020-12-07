@@ -8,7 +8,7 @@ html
   body
     img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png' class='popcorn')
     if locals.authenticated
-    div(class="welcome-user"): p(class="welcome-user") Welcome #{user.firstName}
+    //- div(class="welcome-user"): p(class="welcome-user") Welcome #{user.firstName}
     nav(class='navbar navbar-expand-lg navbar-dark bg-primary')
       
       div(class='navbar-div'): a(class='navbar-links' href='/') What to Watch
@@ -18,8 +18,8 @@ html
       div(class='navbar-links' id='navbarText')
         ul(class='navbar-nav mr-auto')
           //- span(class='navbar-text px-4') Welcome #{user.firstName}!
-          form(class='form-inline pr-4' action='/users/logout' method='post')
-            button(class='btn navbar-links' id='logout' type='submit') Logout
+          //- form(class='form-inline pr-4' action='/api/logout' method='delete')
+          button(class='btn navbar-links' id='logout' type='submit') Logout
           
     div(class="sidebar")
       div: a(href='/users/watchlists/want') Watched
@@ -27,5 +27,6 @@ html
       div(class='movies-by') Movies by:
       div: a(href='/search/alpha-order') Alphabetical order
       div: a(href='/search/released') Released
-      div: a(href='/search/random') Random 
+      div: a(href='/search/random') Random
+    div(class="logout-message")
     block content
