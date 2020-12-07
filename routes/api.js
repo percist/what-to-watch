@@ -6,6 +6,21 @@ const { restoreUser } = require('../auth');
 
 router.put('/want', restoreUser, asyncHandler(async (req, res) => {
   console.log('********* THIS IS WANTING TO WATCH SOMETHING')
+  // console.log(req.data)
+  const data = await res.json()
+  // const {
+  //   userId,
+  //   movieId,
+  // } = data
+
+  console.log(data);
+
+  // const watchedMovie = await db.WatchedMovie.create({
+  //   watchlistId: userId.id,
+  //   movieId,
+  //   watchStatus: 'want'
+  // });
+  
 }));
 
 router.put('/watched', restoreUser, asyncHandler(async (req, res) => {

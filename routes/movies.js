@@ -66,7 +66,7 @@ router.get(
 
       const validatorErrors = validationResult(req);
       let errors = [];
-      errors.push('NO BITCH')
+      errors.push('NOT ON YOUR LIFE')
       errors = validatorErrors.array().map((error) => error.msg)
       res.render('new-review', {
         movieId: movie.id, csrfToken: req.csrfToken(), user, errors})

@@ -1,7 +1,7 @@
 const apiurl = "http://localhost:8080/api";
 
-const changeWatchStatus = async data => {
-    const url = `${apiurl}/${data}`
+const changeWatchStatus = async (data, route) => {
+    const url = `${apiurl}/${route}`
     console.log(url)
     const res = await fetch(url, {
         method: "PUT",
@@ -10,7 +10,7 @@ const changeWatchStatus = async data => {
         },
         data: JSON.stringify(data)
     });
-    return res.json();
+    return await res.json();
 }
 
 const deleteWatchStatus = async () => {
@@ -24,9 +24,11 @@ const deleteWatchStatus = async () => {
 document.addEventListener("DOMContentLoaded", async (event) => {
 
     const watchedButton = document.querySelector('.watchToggler')
+    const form = document.querySelector('.form-inline_watchList')
 
     watchedButton.addEventListener('click', async (e) => {
         e.preventDefault()
+        // console.log('below prevent default____________________-')
         if (watchedButton.innerHTML === "Watched") {
             try {
                 await changeWatchStatus('watched');
@@ -34,10 +36,11 @@ document.addEventListener("DOMContentLoaded", async (event) => {
             } catch (e) {
                 console.log(e)
             }
-        } else if (watchedButton.innerHTML === "Want to Watch") {
+        } else if (watchedButton.value === "Want to Watch") {
             try {
-                await changeWatchStatus('want');
-                watchedButton.innerHTML = "Watched";
+                const FD = new FormData(form)
+                watchedButton.setAttribute("value", 'Watched');
+                await changeWatchStatus(FD, 'want');
             } catch (e) {
                 console.log(e)
             }
@@ -48,8 +51,6 @@ document.addEventListener("DOMContentLoaded", async (event) => {
             } catch (e) {
                 console.log(e)
             }
-
-
         }
         });
 
