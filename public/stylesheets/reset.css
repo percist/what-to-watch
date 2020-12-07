@@ -4,6 +4,8 @@ body {
   padding: 50px;
   font: 14px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: rgba(244, 241, 234, 0.5);
+  /* width: 1145px; */
+  margin: 0 auto;
   /* color:#333333; */
 }
 
@@ -45,7 +47,8 @@ a {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto;
   background-color:#F4F1EA;
-
+  margin: 0 auto;
+  max-width: 1145px;
 }
 
 .form-group{
@@ -87,20 +90,6 @@ a {
   box-sizing: border-box; 
   /* padding: 20px; */
   
-}
-
-.table {
-  margin-top: 50px;
-}
-
-.movies-by{
-  font-size: 20px;
-  margin-top: 50px;
-  font-weight: underline;
-}
-
-#order-selector{
-  font-size: 5px;
 }
 
 .empty{

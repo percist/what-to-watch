@@ -7,8 +7,10 @@ html
         script(type="module" src="/javascripts/index.js")  
   body
     img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png' class='popcorn')
-    if locals.authenticated
-    //- div(class="welcome-user"): p(class="welcome-user") Welcome #{user.firstName}
+    if user
+      div(class="welcome-user"): p(class="welcome-user") Welcome #{user.firstName}
+    else
+      div
     nav(class='navbar navbar-expand-lg navbar-dark bg-primary')
       
       div(class='navbar-div'): a(class='navbar-links' href='/') What to Watch
