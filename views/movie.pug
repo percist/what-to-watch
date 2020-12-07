@@ -11,7 +11,7 @@ block content
                     li=overview
             div
                         //- todo Watched Button PUT
-            form(class='form-inline_watchList')
+            form(class='form-inline_watchList' action=`/movies/${movieId}` method='post')
                 input(type='hidden' value=movieId)
                 input(type='hidden' value=user.id)
                 input(class='btn watchToggler' type='submit' value='Want to Watch')
