@@ -89,6 +89,20 @@ a {
   
 }
 
+.table {
+  margin-top: 50px;
+}
+
+.movies-by{
+  font-size: 20px;
+  margin-top: 50px;
+  font-weight: underline;
+}
+
+#order-selector{
+  font-size: 5px;
+}
+
 .empty{
   margin-left: 200px;
   margin-top: 50px;

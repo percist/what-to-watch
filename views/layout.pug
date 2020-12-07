@@ -25,7 +25,7 @@ html
       div: a(href='/users/watchlists/want') Watched
       div: a(href='/users/watchlists/watched') Want to Watch
       div(class='movies-by') Movies by:
-      div: a(href='/search/alpha-order') Alphabetical order
-      div: a(href='/search/released') Released
-      div: a(href='/search/random') Random 
+      div(id='order-selector'): a(href='/search/alpha-order') Alphabetical order
+      div(id='order-selector'): a(href='/search/released') Released
+      div(id='order-selector'): a(href='/search/random') Random 
     block content
