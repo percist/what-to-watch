@@ -143,11 +143,14 @@ h1 {
   text-align: center;
 }
 
-.table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
+
+.table, th, td {  
+  border: 3px solid lightgray;  
+  background-color: #F4F1EA;
+  border-collapse: collapse;  
   padding: 8px;
 }
+
 
 .movie-container-1, .review {
   margin-left: 200px;
@@ -257,6 +260,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-wrap: break-word;
 }
 
 .welcome-user {
