@@ -40,6 +40,7 @@ a {
 
 
 
+
 .login-card{
   display:grid;
   grid-template-columns: repeat(5, 1fr);
@@ -101,6 +102,16 @@ a {
 
 #order-selector{
   font-size: 5px;
+}
+
+#order-selector:hover{
+  background-color: #382110;
+  color: white;
+}
+
+#watch-want:hover{
+   background-color: #382110;
+   color: white;
 }
 
 .empty{
