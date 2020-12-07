@@ -60,4 +60,28 @@ router.get('/watched', restoreUser, asyncHandler(async(req, res) => {
 
 }));
 
+
+router.get('/my-movies', restoreUser, asyncHandler(async (req, res) => {
+  const user = res.locals.user
+  const object = {
+    include: [{
+      model: db.Watchlist,
+      where: {
+        userId: user.id,
+      },
+      through: {
+        where: {
+          // watchStatus: 'watched'
+        }
+      }
+    }]
+  }
+  const movies = await db.Movie.findAll(object);
+  res.render('my-movies', {
+    movies,
+    user
+  });
+
+}));
+
 module.exports = router;

@@ -1,4 +1,4 @@
-const apiurl = "http://localhost:8080/api";
+const apiurl = "/api";
 
 const changeWatchStatus = async (data, route) => {
     const url = `${apiurl}/${route}`
@@ -21,7 +21,7 @@ const deleteWatchStatus = async () => {
 }
 
 const handleLogoutClick = async () => {
-    const request = await fetch('http://localhost:8080/api/logout', {
+    const request = await fetch('/api/logout', {
         method: 'DELETE'
     })
 
