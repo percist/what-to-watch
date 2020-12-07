@@ -1,4 +1,6 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 
 body {
   padding: 0px;
@@ -7,11 +9,9 @@ body {
   /* width: 1145px; */
   margin: 0;
   /* color:#333333; */
+  color: #473121
 }
 
-a {
-  color: magenta;
-}
 
 #navbar { 
   display: flex;
@@ -66,7 +66,7 @@ a {
 
 .btn{
   background-color: #b9ac99;
-  color:#333333;
+  color: #473121;
   font-weight: 300;
   border-radius: 10px;
   padding: 4px;
@@ -130,12 +130,19 @@ body, header, nav {
   /* background-color: brown; */
  
   font-size: 1rem;
-  color: inherit;
+  color: #473121;
   /* background-color: #F9F7F3; */
   margin: 0;
   padding: 0;
   outline: 0;
   font-weight: normal;
+}
+
+a:hover,  span:hover,
+ nav:hover {
+  /* background-color: brown; */
+ 
+  color: white;
 }
 
 h1 {
