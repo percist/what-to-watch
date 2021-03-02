@@ -2,8 +2,9 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title="What to Watch"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/index.css')
         script(type="module" src="/javascripts/index.js")  
   body
     img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png' class='popcorn')
@@ -15,8 +16,6 @@ html
       
       div(class='navbar-div'): a(class='navbar-links' href='/') What to Watch
       div(class='navbar-div'): a(class='navbar-links' href='/users') My Movies
-        //- for each genre in genres
-        //-   a(href=genre)=genere.name
       div(class='navbar-links' id='navbarText')
         ul(class='navbar-nav mr-auto')
           //- span(class='navbar-text px-4') Welcome #{user.firstName}!
@@ -33,3 +32,32 @@ html
       div(id='order-selector'): a(href='/search/random') Random 
     
     block content
+
+    block footer
+    <div id="footer-bar">
+      <div class="footer ahdari">
+        <h3>Ahdari Scott</h3>
+        <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/ahdari-scott-916225117" ><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:ahdari33@gmail.com" ><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/koran23" ><i class="fab fa-github"></i></a>
+      </div>
+      <div class="footer chris">
+        <h3>Chris Clark</h3>
+        <a href="https://www.linkedin.com/in/crclark101010/" ><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:percist@gmail.com" ><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/percist" ><i class="fab fa-github"></i></a>
+      </div>
+      <div class="footer elyse">
+        <h3>Elyse Steingold</h3>
+        <a href="www.linkedin.com/in/" ><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:" ><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/" ><i class="fab fa-github"></i></a>
+      </div>
+      <div class="footer samuel">
+        <h3>Samuel Nunn</h3>
+        <a href="www.linkedin.com/in/ahdari-scott-916225117" ><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:" ><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/" ><i class="fab fa-github"></i></a>
+      </div>
+    </div>
