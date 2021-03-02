@@ -78,12 +78,12 @@
 }
 
 .table {
-  margin-top: 50px;
+  padding-top: 150px;
 }
 
 .movies-by{
   font-size: 20px;
-  margin-top: 50px;
+  padding-top: 250px;
   font-weight: underline;
 }
 
@@ -103,7 +103,7 @@ nav:hover,
 
 .empty{
   margin-left: 200px;
-  margin-top: 50px;
+  padding-top: 150px;
 }
 
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
@@ -132,6 +132,11 @@ h1 {
 .review,
 #table-id {
   margin-left: 200px;
+}
+
+.table-container,
+.reveiw-container{
+  padding-top: 150px;
 }
 
 .sidebar {
