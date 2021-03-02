@@ -1,8 +1,33 @@
-h1 {
-    
-    /* color: #555555; */
-}
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 * {
-    
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+html,body {
+  font: 14px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: blanchedalmond;
+  color: #473121
+}
+
+#footer-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  background-color: tan;
+  color: white;
+  bottom: 0px;
+}
+
+.fas,
+.fab {
+  font-size: 48px;
+  color: mediumblue;
 }
