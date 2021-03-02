@@ -16,10 +16,12 @@ for (let i = 0; i < 50; i++) {
   .then(json => {
       movieObject = {
           title: json.title,
+          tag: json.tagline,
           posterPath: json.poster_path,
           tmdbId: json.id,
           genres: json.genres[0].name,
           overview: json.overview,
+          vote: json.vote_average,
           releaseDate: json.release_date,
           runtime: json.runtime
       }

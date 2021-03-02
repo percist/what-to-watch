@@ -89,11 +89,13 @@ router.get('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
     movieId: movie.id,
     reviews,
     title: movie.title,
+    tagline: movie.tagline,
     poster: `https://image.tmdb.org/t/p/original${movie.posterPath}`,
     releaseDate: movie.releaseDate,
     runtime: movie.runtime,
     genres: movie.genres,
     overview: movie.overview,
+    vote: movie.vote,
     user
   })
 }));

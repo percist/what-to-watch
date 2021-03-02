@@ -7,8 +7,11 @@ block content
             div(class="movie-info")
                 ul  
                     li=title
+                    li=tagline
                     li=releaseDate
                     li=overview
+                    li=vote
+                    
             div
                         //- todo Watched Button PUT
             form(class='form-inline_watchList' action=`/movies/${movieId}` method='post')
