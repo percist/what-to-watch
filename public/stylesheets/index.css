@@ -26,8 +26,14 @@ html,body {
   bottom: 0px;
 }
 
+#footer-bar h3 {
+  color: blanchedalmond;
+}
+
 .fas,
 .fab {
+  height: 48px;
+  width: 48px;
   font-size: 48px;
-  color: mediumblue;
+  color: khaki;
 }
