@@ -1,18 +1,6 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-
-body {
-  padding: 0px;
-  font: 14px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: rgba(244, 241, 234, 0.5);
-  /* width: 1145px; */
-  margin: 0;
-  /* color:#333333; */
-  color: #473121
-}
-
-
 #navbar { 
   display: flex;
   justify-content: space-around;
@@ -36,14 +24,10 @@ body {
   
 }
 
-
 .navbar-div:hover {
   background-color: #382110;
   color: white;
 }
-
-
-
 
 .login-card{
   display:grid;
@@ -55,14 +39,12 @@ body {
 }
 
 .form-group{
-  grid-column: 3 / 4  ;
-  
+  grid-column: 3 / 4  ; 
 }
 
 .form-label {
   grid-column: 2 / 3;
 }
-
 
 .btn{
   background-color: #b9ac99;
@@ -71,9 +53,7 @@ body {
   border-radius: 10px;
   padding: 4px;
   margin: 2px;
-  
  }
-
 
 .btn:hover{
   box-shadow: 0.3em 0.3em 0.25em -0.3em;
@@ -87,13 +67,6 @@ body {
 
 #logout{
   padding: 7px;
-}
-
-* {
-  box-sizing: border-box; 
-  margin: 0 auto;
-  /* padding: 20px; */
-  
 }
 
 .table {
@@ -126,12 +99,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
-body, header, nav {
-  /* background-color: brown; */
- 
+body, header, nav { 
   font-size: 1rem;
   color: #473121;
-  /* background-color: #F9F7F3; */
   margin: 0;
   padding: 0;
   outline: 0;
@@ -140,8 +110,6 @@ body, header, nav {
 
 a:hover,  span:hover,
  nav:hover {
-  /* background-color: brown; */
- 
   color: white;
 }
 
@@ -171,7 +139,6 @@ h1 {
   height: 100%;
   width: 160px;
   position: fixed;
-  /* z-index: 1; */
   top: 100;
   left: 0;
   background-color: rgba(244, 241, 234, 0.5);
@@ -190,8 +157,6 @@ h1 {
 .movies-by {
   padding: 10px;
 }
-
-
 
 .py-4 {
   text-align: center;

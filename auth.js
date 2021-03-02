@@ -11,7 +11,6 @@ const logoutUser = (req, res) => {
   delete req.session.auth;
 };
 
-
 const requireAuth = (req, res, next) => {
   if (!res.locals.authenticated) {
     return res.redirect('/user/login');
@@ -23,10 +22,8 @@ const restoreUser = async (req, res, next) => {
 
   if (req.session.auth) {
     const { userId } = req.session.auth;
-    // console.log(userId)
     try {
       const user = await db.User.findByPk(userId);
-      // console.log(user)
       if (user) {
         res.locals.authenticated = true;
         res.locals.user = user;
@@ -34,12 +31,10 @@ const restoreUser = async (req, res, next) => {
       }
     } catch (err) {
       res.locals.authenticated = false;
-      // res.redirect('/');
       next(err);
     }
   } else {
     res.locals.authenticated = false;
-    // res.redirect('/');
     next();
   }
 };
