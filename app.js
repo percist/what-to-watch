@@ -28,7 +28,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(sessionSecret));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(restoreUser);
 
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
@@ -51,7 +50,6 @@ app.use('/search', searchRouter);
 app.use('/movies', moviesRouter);
 app.use('/api', apiRouter);
 app.use('/users/watchlists', watchlistsRouter);
-// app.use(restoreUser());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

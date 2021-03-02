@@ -12,7 +12,7 @@ block content
       tbody
         each movie in movies
           tr
-            td= movie.title
-            td= movie.Genre.name
+            td(class='title')= movie.title
+            td(class='genre')= movie.Genre.name
             td 
             td

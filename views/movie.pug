@@ -13,7 +13,6 @@ block content
                     li=vote
                     
             div
-                        //- todo Watched Button PUT
             form(class='form-inline_watchList' action=`/movies/${movieId}` method='post')
                 input(type='hidden' value=movieId)
                 input(type='hidden' value=user.id)

@@ -3,25 +3,33 @@
 
 #navbar { 
   display: flex;
-  justify-content: space-around;
+  width: 100%;
+  height: 80px;
+  position: fixed;
   align-items: center;  
   background-color:#F4F1EA;
   margin: 0;
-  padding: 0;
+  padding: 0 35px;
 }
 
 /* TODO: text wrap movie overview */
 
 .navbar-links {
-  font-size: 125%;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-grow: 4;
+  justify-content: flex-end;
 }
 
 .navbar-div {
-  border: black 1px;
   line-height: 50px;
   padding: 0 30px;
-  
+}
+
+.popcorn {
+  width: 100px;
 }
 
 .navbar-div:hover {
@@ -70,12 +78,12 @@
 }
 
 .table {
-  margin-top: 50px;
+  padding-top: 150px;
 }
 
 .movies-by{
   font-size: 20px;
-  margin-top: 50px;
+  padding-top: 250px;
   font-weight: underline;
 }
 
@@ -83,11 +91,11 @@
   font-size: 5px;
 }
 
-#order-selector:hover{
-  background-color: #382110;
-  color: white;
-}
 
+a:hover,  
+span:hover,
+nav:hover,
+#order-selector:hover,
 #watch-want:hover{
    background-color: #382110;
    color: white;
@@ -95,7 +103,7 @@
 
 .empty{
   margin-left: 200px;
-  margin-top: 50px;
+  padding-top: 150px;
 }
 
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
@@ -108,16 +116,10 @@ body, header, nav {
   font-weight: normal;
 }
 
-a:hover,  span:hover,
- nav:hover {
-  color: white;
-}
-
 h1 {
   font-size: 2rem;
   text-align: center;
 }
-
 
 .table, th, td {  
   border: 3px solid lightgray;  
@@ -126,26 +128,27 @@ h1 {
   padding: 8px;
 }
 
-
-.movie-container-1, .review {
+.movie-container-1,
+.review,
+#table-id {
   margin-left: 200px;
 }
 
-#table-id {
-  margin-left: 200px;
+.table-container,
+.reveiw-container{
+  padding-top: 150px;
 }
 
 .sidebar {
   height: 100%;
   width: 160px;
   position: fixed;
-  top: 100;
+  top: 80px;
   left: 0;
-  background-color: rgba(244, 241, 234, 0.5);
+  background-color: #F4F1EA;
   overflow-x: hidden;
   padding: 20px;
 }
-
 
 .sidebar a {
   padding: 6px 8px 6px 8px;
@@ -171,10 +174,6 @@ fieldset, label {
    margin: 0; 
    padding: 0; 
   }
-
-body{ 
-  margin: 20px; 
-}
 
 h1 { 
   font-size: 1.5em; 
@@ -216,9 +215,6 @@ h1 {
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
-
-
-
 #small-poster {
   width: 100px;
 }
@@ -242,4 +238,5 @@ h1 {
 
 .welcome-user {
   text-align: right;
+  margin-right: 4px;
 }
