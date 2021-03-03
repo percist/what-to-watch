@@ -26,6 +26,11 @@ const handleLogoutClick = async () => {
   });
 };
 
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", async (event) => {
   const logoutButton = document.getElementById("logout");
   if (logoutButton) {
@@ -35,18 +40,44 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
       logoutButton.hidden = true;
       const container = document.querySelector(".logout-message");
-    //   container.innerHTML = "Logout Successful";
+      //   container.innerHTML = "Logout Successful";
       window.location.href = "/"
     });
+
   }
-//   const demoButton = document.getElementById("demo-button");
-//   const email = document.getElementById("email");
-//   const password = document.getElementById("password");
-//   demoButton.addEventListener("click", (event) => {
-//     event.preventDefault();
-//     email.innerHTML = "john@doe.com";
-//     password.innerHTML = "P@ssw0rd";
-//   });
+
+  //querey for watchlist status and then based on it hide watchlist button
+
+  // const watched hidden=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //   const demoButton = document.getElementById("demo-button");
+  //   const email = document.getElementById("email");
+  //   const password = document.getElementById("password");
+  //   demoButton.addEventListener("click", (event) => {
+  //     event.preventDefault();
+  //     email.innerHTML = "john@doe.com";
+  //     password.innerHTML = "P@ssw0rd";
+  //   });
 
   //create div with html and await that and if the res.json comes back we create a div set the html to the res.json and appendchild to the body
 
