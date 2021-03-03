@@ -69,7 +69,8 @@ router.get(
       errors.push('NOT ON YOUR LIFE')
       errors = validatorErrors.array().map((error) => error.msg)
       res.render('new-review', {
-        movieId: movie.id, csrfToken: req.csrfToken(), user, errors})
+        movieId: movie.id, csrfToken: req.csrfToken(), user, errors
+      })
     }
   })
 );
@@ -101,12 +102,12 @@ router.get('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
 }));
 
 router.post('/:id(\\d+)/reviews/new', csrfProtection, restoreUser, asyncHandler(async (req, res) => {
- 
+
   const review = req.body.movieReview;
   const stars = parseInt(req.body.rating, 10);
   const userId = req.session.auth.userId;
   const movieId = parseInt(req.params.id, 10);
-  
+
   await db.Review.create({
     stars,
     review,
@@ -156,8 +157,8 @@ router.post('/:id(\\d+)/reviews/new', csrfProtection, restoreUser, asyncHandler(
 
 
 
-
-router.post('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
+/****************** TODO: FIX THIS!!!  ********************** */
+router.post('/:id(\\d+)/want', restoreUser, asyncHandler(async (req, res) => {
 
   const movieId = parseInt(req.params.id, 10);
   const user = res.locals.user
@@ -182,9 +183,12 @@ router.post('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
     watchStatus: 'want',
   })
 
-  
 
- 
+  return res.render('response')
+
+
+
+
 
 }))
 
@@ -192,7 +196,7 @@ router.post('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
 
 
 
-router.post('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
+router.post('/:id(\\d+)/watched', restoreUser, asyncHandler(async (req, res) => {
 
   const movieId = parseInt(req.params.id, 10);
   const user = res.locals.user
@@ -211,14 +215,14 @@ router.post('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
     }]
   }
 
-  const newWatched = await db.WatchedMovie.update({
+  const newWatched = await db.WatchedMovie.create({
     watchListId: user.id,
     movieId: movieId,
     watchStatus: 'watched',
   })
 
 
-
+  return res.render('response')
 
 
 }))
