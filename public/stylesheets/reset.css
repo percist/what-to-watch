@@ -135,7 +135,7 @@ h1 {
 }
 
 .table-container,
-.reveiw-container{
+.review-container{
   padding-top: 150px;
 }
 
@@ -239,4 +239,40 @@ h1 {
 .welcome-user {
   text-align: right;
   margin-right: 4px;
+}
+
+#response {
+  /* padding: 5%; */
+  padding-top: 10%;
+  padding-left: 10%;
+}
+
+
+.movie-container-1 {
+  padding-top: 70px;
+  display: flex;
+  /* padding-bottom: 200px; */
+}
+
+.table-container {
+  padding-bottom: 200px;
+}
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.movie-info li {
+  list-style-type: none;
+  padding: 1%;
+
+}
+
+.watchToggler, .btn-pad {
+  /* padding-left: 200px; */
+}
+
+.movie-reviews {
+  padding-left: 200px;
 }
