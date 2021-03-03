@@ -13,15 +13,15 @@ block content
                     li=vote
                     
             div
-            form(class='form-inline_watchList' action=`/movies/${movieId}` method='post')
+            form(class='form-inline_watchList' action=`/movies/${movieId}/want` method='post')
+                input(type='hidden' value=movieId)
+                input(type='hidden' value=user.id)
+                input(class='btn watchToggler' type='submit' value='Want to Watch')
+            div
+            form(class='form-inline_watchList' action=`/movies/${movieId}/watched` method='post')
                 input(type='hidden' value=movieId)
                 input(type='hidden' value=user.id)
                 input(class='btn watchToggler' type='submit' value='Watched')
-            div
-            //- form(class='form-inline_watchList' action=`/movies/${movieId}` method='post')
-            //-     input(type='hidden' value=movieId)
-            //-     input(type='hidden' value=user.id)
-            //-     input(class='btn watchToggler' type='submit' value='Want to Watch')
             div
                 //- todo Write a Reveiw button GET movies/review form
                 form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')
