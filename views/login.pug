@@ -2,7 +2,7 @@ doctype html
 html
   head
     include utils.pug
-    title="Express Starter App"
+    title="What to Watch"
     link(rel='stylesheet' href='/stylesheets/reset.css')
 
   body
@@ -13,9 +13,9 @@ html
       form(action="/users/login" method='post' class='form-group')
         input(type='hidden' name='_csrf' value=csrfToken)
         div(class='login-card_1')
-          label(for='email' class='form-label')= 'Email Adress: '
+          label(for='email' class='form-label')= 'Email Address: '
         div(class='login-card_2')  
-          input(type='email' id='email' name='email' class='form-label')
+          input(type='email' id='email' name='email' class='form-label' value=null)
         div(class='login-card_3')  
           label(for='password' class='form-label')= 'Password: '
         div(class='login-card_4')
@@ -23,6 +23,12 @@ html
           div(class='login-card_5') 
             button(type='submit' class='btn btn-primary' id='button-center') Login
             a(href='/' class='btn btn-warning ml-2' id='button-center') Cancel
-    div  
+    div
+      form(action='/users/login' method='post')
+        input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
+        input(name='email' value='john@doe.com' type='hidden')  
+        input(name='password' value="P@ssw0rd" type='hidden')  
+        button(type='submit' class='btn btn-primary') Demo User
+
       p: a(href='/users/register') Don't have an account?
       

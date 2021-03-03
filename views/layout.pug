@@ -14,8 +14,8 @@ html
     nav(class='navbar navbar-expand-lg navbar-dark bg-primary' id="navbar")
       img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png' class='popcorn')
       div(class='navbar-links')
-          div(class='navbar-div'): a(class='navbar-links' href='/') What to Watch
-          div(class='navbar-div'): a(class='navbar-links' href='/users') My Movies
+          div(class='navbar-div'): a(class='navbar-links' href='/search/random') What to Watch
+          //- div(class='navbar-div'): a(class='navbar-links' href='/users') My Movies
           if user
             div(class="welcome-user"): p(class="welcome-user") Welcome #{user.firstName}
           else
