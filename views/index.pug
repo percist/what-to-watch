@@ -1,18 +1,9 @@
-doctype html
-html
-  head
-    title="What to Watch"
-    link(rel='stylesheet' href='/stylesheets/reset.css')
-    script(src="/javascripts/index.js" type="module" defer)
-
-    meta(charset='utf-8')
-
-    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
-   
-  //- add page specific styles by appending to the head
-    link(rel="stylesheet" href="/stylesheets/index.css")
-  //- add page specific js
-  body
+extends layout
+block append head 
+  include utils.pug
+block header
+  <h2>
+block content
     img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png', class="popcorn")
     h1= title
     span(class="navbar-text")          
