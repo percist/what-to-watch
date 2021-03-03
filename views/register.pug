@@ -1,10 +1,9 @@
-doctype html
-html
-  head
-    include utils.pug
-    title="Express Starter App"
-    link(rel='stylesheet' href='/stylesheets/reset.css')
-  body
+extends layout
+block append head 
+  include utils.pug
+block header
+  <h2>
+block content
     img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png', class="popcorn")
     h1 Register
     +validationErrorSummary(errors)

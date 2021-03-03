@@ -5,36 +5,46 @@ html
         title="What to Watch"
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/index.css')
-        script(type="module" src="/javascripts/index.js") 
+        link(rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png")
+        link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
+        link(rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png")
+        link(rel="manifest" href="/site.webmanifest")
+        link(rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5")
         script(
           src="https://kit.fontawesome.com/20cc43c639.js"
           crossorigin="anonymous"
           ) 
+        script(src="/javascripts/index.js" type="module" defer)
+        meta(name="msapplication-TileColor" content="#da532c")
+        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(name="theme-color" content="#ffffff")
+        meta(charset='utf-8')
   body
-    nav(class='navbar navbar-expand-lg navbar-dark bg-primary' id="navbar")
-      img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png' class='popcorn')
-      div(class='navbar-links')
-          div(class='navbar-div'): a(class='navbar-links' href='/search/random') What to Watch
-          //- div(class='navbar-div'): a(class='navbar-links' href='/users') My Movies
-          if user
-            div(class="welcome-user"): p(class="welcome-user") Welcome #{user.firstName}
-          else
-            div
-          div(id='navbarText')
-            ul(class='navbar-nav mr-auto')
-              //- span(class='navbar-text px-4') Welcome #{user.firstName}!
-              //- form(class='form-inline pr-4' action='/api/logout' method='delete')
-              button(class='btn navbar-links' id='logout' type='submit') Logout
-              div(class="logout-message")
-          
-    div(class="sidebar")
-      div(id='watch-want'): a(href='/users/watchlists/want') Watched
-      div(id='watch-want'): a(href='/users/watchlists/watched') Want to Watch
-      div(class='movies-by') Movies by:
-      div(id='order-selector'): a(href='/search/alpha-order') Alphabetical order
-      div(id='order-selector'): a(href='/search/released') Released
-      div(id='order-selector'): a(href='/search/random') Random 
-    
+    block header
+      nav(class='navbar navbar-expand-lg navbar-dark bg-primary' id="navbar")
+        img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png' class='popcorn')
+        div(class='navbar-links')
+            div(class='navbar-div'): a(class='navbar-links' href='/search/random') What to Watch
+            //- div(class='navbar-div'): a(class='navbar-links' href='/users') My Movies
+            if user
+              div(class="welcome-user"): p(class="welcome-user") Welcome #{user.firstName}
+            else
+              div
+            div(id='navbarText')
+              ul(class='navbar-nav mr-auto')
+                //- span(class='navbar-text px-4') Welcome #{user.firstName}!
+                //- form(class='form-inline pr-4' action='/api/logout' method='delete')
+                button(class='btn navbar-links' id='logout' type='submit') Logout
+                div(class="logout-message")
+            
+      div(class="sidebar")
+        div(id='watch-want'): a(href='/users/watchlists/want') Watched
+        div(id='watch-want'): a(href='/users/watchlists/watched') Want to Watch
+        div(class='movies-by') Movies by:
+        div(id='order-selector'): a(href='/search/alpha-order') Alphabetical order
+        div(id='order-selector'): a(href='/search/released') Released
+        div(id='order-selector'): a(href='/search/random') Random 
+      
     block content
 
   block footer
@@ -53,14 +63,14 @@ html
       </div>
       <div class="footer elyse">
         <h3>Elyse Steingold</h3>
-        <a href="www.linkedin.com/in/" ><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:" ><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/" ><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/elyse-steingold-2234b299/" ><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:elyselindsays@gmail.com" ><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/elyselindsays" ><i class="fab fa-github"></i></a>
       </div>
       <div class="footer samuel">
         <h3>Samuel Nunn</h3>
-        <a href="www.linkedin.com/in/ahdari-scott-916225117" ><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:" ><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/" ><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/samuelnunn90/" ><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:samuelnunn90@gmail.com" ><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Samuelnunn" ><i class="fab fa-github"></i></a>
       </div>
     </div>
