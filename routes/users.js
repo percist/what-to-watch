@@ -55,6 +55,9 @@ const validateEmailAndPasswordForLogin = [
   // handleValidationErrors,
 ];
 
+
+
+
 // Render index
 router.get('/', asyncHandler(async(req, res) => {
   res.render('user');
@@ -141,14 +144,13 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
        return res.render('user', { user, csrfToken: req.csrfToken() });
       }
     }
-
     errors.push('Login failed for the provided email and password');
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
   }
-
-  // res.redirect('/users');
- // TODO: Do we need to pass the csrf token at this point?
+  
+  
+  // TODO: Do we need to pass the csrf token at this point?
   res.render('login', {
     title: 'Login',
     email,
