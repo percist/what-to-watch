@@ -3,38 +3,43 @@ extends layout
 block content
         div(class="movie-container-1")
             div
-            img(class="movie-poster", id="poster", src= poster)
+                img(class="movie-poster", id="poster", src= poster)
             div(class="movie-info")
-                ul  
-                    li=title
-                    li=tagline
+                //- ul  
+                //-     li=title
+                //-     li=tagline
+                //-     li=releaseDate
+                //-     li=overview
+                //-     li=vote
+                h1=title
+                h4=tagline
+                ul
                     li=releaseDate
                     li=overview
                     li=vote
-                    
-            div
-            form(class='form-inline_watchList' action=`/movies/${movieId}/want` method='post')
-                input(type='hidden' value=movieId)
-                input(type='hidden' value=user.id)
-                input(class='btn watchToggler' type='submit' value='Want to Watch')
-            div
-            form(class='form-inline_watchList' action=`/movies/${movieId}/watched` method='post')
-                input(type='hidden' value=movieId)
-                input(type='hidden' value=user.id)
-                input(class='btn watchToggler' type='submit' value='Watched')
-            div
-                //- todo Write a Reveiw button GET movies/review form
-                form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')
-                    button(class='btn' id='review' type='submit') Write a Review
-            div
-            div(class="movie-reviews")
-                //- TODO display review if there is one. Display a messgae indicating you are 
-                    the first to review if there isn't one. 
-                if reviews 
-                    each review in reviews
-                        div(class="movie-reviews_stars")=review.stars
-                        div(class="movie-reviews_text")=review.review
-                else 
-                    p There are no reviews. Be the first to review this movie!
+                    li
+                        form(class='form-inline_watchList' action=`/movies/${movieId}/want` method='post')
+                            input(type='hidden' value=movieId)
+                            input(type='hidden' value=user.id)
+                            input(class='btn watchToggler' type='submit' value='Want to Watch')
+                    li
+                        form(class='form-inline_watchList' action=`/movies/${movieId}/watched` method='post')
+                            input(type='hidden' value=movieId)
+                            input(type='hidden' value=user.id)
+                            input(class='btn watchToggler' type='submit' value='Watched')
+                    li
+                        form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')
+                            button(class='btn btn-pad' id='review' type='submit') Write a Review
+            //- todo Write a Reveiw button GET movies/review form
+        div
+        div(class="movie-reviews")
+            //- TODO display review if there is one. Display a messgae indicating you are 
+                the first to review if there isn't one. 
+            if reviews 
+                each review in reviews
+                    div(class="movie-reviews_stars")=review.stars
+                    div(class="movie-reviews_text")=review.review
+            else 
+                p There are no reviews. Be the first to review this movie!
 
 
