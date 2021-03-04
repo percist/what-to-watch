@@ -3,7 +3,7 @@ block append head
     script(src='/javascripts/status.js')
 
 block content
-        div(class="movie-container-1")
+        div(class="movie-container-1" id=movieId)
             div
                 img(class="movie-poster", id="poster", src= poster)
             div(class="movie-info")
@@ -31,7 +31,7 @@ block content
                             input(class='btn watchToggler' id="watch-btn" type='submit' value='Watched')
                     li
                         form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')
-                            button(class='btn btn-pad' id='review' type='submit') Write a Review
+                            button(class='btn btn-pad' id='review' type='submit' disabled) Write a Review
             //- todo Write a Reveiw button GET movies/review form
         div
         div(class="movie-reviews")

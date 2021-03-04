@@ -184,9 +184,9 @@ router.post('/:id(\\d+)/want', restoreUser, asyncHandler(async (req, res) => {
   })
 
 
-  return res.render('response')
+  // return res.render('response')
 
-
+  return res.redirect('/users/watchlists/want')
 
 
 
@@ -222,12 +222,31 @@ router.post('/:id(\\d+)/watched', restoreUser, asyncHandler(async (req, res) => 
   })
 
 
-  return res.render('response')
-
+  // return res.render('response')
+  return res.redirect('/users/watchlists/watched')
 
 }))
 
+router.get('/:id(\\d+)/status', restoreUser, asyncHandler(async (req, res) => {
+  const movieId = parseInt(req.params.id, 10);
 
+  const user = res.locals.user;
+
+  const watchStatus = await db.WatchedMovie.findOne({
+    where: {
+      movieId,
+      watchListId: user.id,
+    }
+  });
+
+
+  if (watchStatus.watchStatus === 'want') {
+    res.send(false);
+  } else if (watchStatus.watchStatus === 'watched') {
+    res.send(true);
+  } else return null;
+
+}));
 
 
 

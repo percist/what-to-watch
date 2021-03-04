@@ -13,7 +13,7 @@ const db = require('../db/models');
 
 
 // User Clicks on 'Want to Watch' and a table containing their movies is returned
-router.get('/want', restoreUser, asyncHandler(async(req, res) => {
+router.get('/want', restoreUser, asyncHandler(async (req, res) => {
   const user = res.locals.user
   const object = {
     include: [{
@@ -38,7 +38,7 @@ router.get('/want', restoreUser, asyncHandler(async(req, res) => {
 }));
 
 // User clicks on 'Watched' and a table containing their watched movies is returned
-router.get('/watched', restoreUser, asyncHandler(async(req, res) => {
+router.get('/watched', restoreUser, asyncHandler(async (req, res) => {
   const user = res.locals.user
   const object = {
     include: [{
@@ -84,5 +84,20 @@ router.get('/my-movies', restoreUser, asyncHandler(async (req, res) => {
   });
 
 }));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
