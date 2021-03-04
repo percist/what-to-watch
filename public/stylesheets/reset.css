@@ -277,3 +277,16 @@ h1 {
 .movie-reviews {
   padding-left: 200px;
 }
+
+
+button:disabled {
+  background-color: #473121;
+  color: white;
+  cursor: not-allowed;
+}
+
+#want-btn:disabled, #watch-btn:disabled, #review:disabled {
+  background-color: #473121;
+  color: white;
+  cursor: not-allowed;
+} 

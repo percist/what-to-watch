@@ -1,7 +1,9 @@
 extends layout
+block append head 
+    script(src='/javascripts/status.js')
 
 block content
-        div(class="movie-container-1")
+        div(class="movie-container-1" id=movieId)
             div
                 img(class="movie-poster", id="poster", src= poster)
             div(class="movie-info")
@@ -21,15 +23,15 @@ block content
                         form(class='form-inline_watchList' action=`/movies/${movieId}/want` method='post')
                             input(type='hidden' value=movieId)
                             input(type='hidden' value=user.id)
-                            input(class='btn watchToggler' type='submit' value='Want to Watch')
+                            input(class='btn watchToggler' id='want-btn' type='submit' value='Want to Watch')
                     li
                         form(class='form-inline_watchList' action=`/movies/${movieId}/watched` method='post')
                             input(type='hidden' value=movieId)
                             input(type='hidden' value=user.id)
-                            input(class='btn watchToggler' type='submit' value='Watched')
+                            input(class='btn watchToggler' id="watch-btn" type='submit' value='Watched')
                     li
                         form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')
-                            button(class='btn btn-pad' id='review' type='submit') Write a Review
+                            button(class='btn btn-pad' id='review' type='submit' disabled) Write a Review
             //- todo Write a Reveiw button GET movies/review form
         div
         div(class="movie-reviews")
