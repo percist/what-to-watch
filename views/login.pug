@@ -21,11 +21,12 @@ block content
           div(class='login-card_5') 
             button(type='submit' class='btn btn-primary' id='button-center') Login
             a(href='/' class='btn btn-warning ml-2' id='button-center') Cancel
-    div
-      form(action='/users/login' method='post')
+    
+      form(action='/users/login' method='post' class='center')
         input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
         input(name='email' value='john@doe.com' type='hidden')  
         input(name='password' value="P@ssw0rd" type='hidden')  
-        button(type='submit' class='btn btn-primary') Demo User
-
+        p Try out the demo before joining!
+        button(type='submit' class='btn btn-primary ' id='button-center') Demo User
+    div
       p: a(href='/users/register') Don't have an account?

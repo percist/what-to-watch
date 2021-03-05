@@ -93,7 +93,7 @@
 
 
 a:hover,  
-span:hover,
+/* span:hover, */
 nav:hover,
 #order-selector:hover,
 #watch-want:hover{
@@ -104,6 +104,9 @@ nav:hover,
 .empty{
   margin-left: 200px;
   padding-top: 150px;
+}
+p {
+  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
@@ -127,7 +130,9 @@ h1 {
   border-collapse: collapse;  
   padding: 8px;
 }
-
+.center {
+  padding-left: 30px;
+}
 .movie-container-1,
 .review,
 #table-id {
