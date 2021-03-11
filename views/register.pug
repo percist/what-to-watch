@@ -2,25 +2,25 @@ extends layout
 block append head 
   include utils.pug
 block header
-  <h2>
 block content
     img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png', class="popcorn")
-    h1 Register
-    +validationErrorSummary(errors)
-    form(action='/users/register', method='post' class='login-card')
-      input(type='hidden' name='_csrf' value=csrfToken)
-      div(class='login-card_1' class='form-group')
-        +field('First Name: ', 'firstName', user.firstName)
-      div(class='login-card_2' class='form-group')
-        +field('Last Name: ', 'lastName', user.lastName)
-      div(class='login-card_3' class='form-group')
-        +field('Email Address: ', 'email', user.email)
-      div(class='login-card_4' class='form-group')
-        +field('Password: ', 'password', user.password, 'password')
-      div(class='login-card_5' class='form-group')
-        +field('Confirm Password: ', 'confirmPassword', '', 'password')
-        div(class='py-4')
-          button(type='submit' class='btn btn-primary') Register
-          a(href='/' class='btn btn-warning ml-2') Cancel
-    div
+    div(id='register-card')
+      h1 Register
+      +validationErrorSummary(errors)
+      form(action='/users/register', method='post' class='login-card')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div(id='register-card_1' class='form-group')
+          +field('First Name: ', 'firstName', user.firstName)
+        div(id='register-card_2' class='form-group')
+          +field('Last Name: ', 'lastName', user.lastName)
+        div(id='register-card_3' class='form-group')
+          +field('Email Address: ', 'email', user.email)
+        div(id='register-card_4' class='form-group')
+          +field('Password: ', 'password', user.password, 'password')
+        div(id='register-card_5' class='form-group')
+          +field('Confirm Password: ', 'confirmPassword', '', 'password')
+      div(id='register-card_6')
+        button(type='submit' class='btn btn-primary') Register
+        button(class='btn btn-warning ml-2' id='button-center')
+          a(href='/' ) Cancel
       p: a(href='/users/login') Already have an account?
