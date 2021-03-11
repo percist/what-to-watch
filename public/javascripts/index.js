@@ -26,11 +26,6 @@ const handleLogoutClick = async () => {
   });
 };
 
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", async (event) => {
   const logoutButton = document.getElementById("logout");
   if (logoutButton) {

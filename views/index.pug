@@ -2,16 +2,28 @@ extends layout
 block append head 
   include utils.pug
 block header
-  <h2>
-block content
     img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png', class="popcorn")
     h1= title
-    span(class="navbar-text")          
-      form(class='form-inline validation-form' action='/users/login' method='get')
-        button(class='btn btn-validate' href='/users/login' type='submit') Login
-      form(class='form-inline validation-form' action='/users/register' method='get')
-        button(class='btn btn-validate' href='/users/register' type='submit') Register 
-    h1 Welcome!    
-    p Please login or register to start searching for your favorite movies?
-    p Don't know what to watch? Don't worry, we've got you covered!
-    img(src='/05e0670c81d19c6aa6e9381b212c5ac4.jpg', class='film')
+block content
+    div(id="splash-page")
+        div(id="splash-page-body")
+          div(id="splash-page-body_content")          
+            div(id="splash-page-body_content-buttons")          
+              h1 Welcome!    
+              form(class='form-inline validation-form' action='/users/login' method='get')
+                button(class='btn btn-validate' href='/users/login' type='submit') Login
+              form(class='form-inline validation-form' action='/users/register' method='get')
+                button(class='btn btn-validate' href='/users/register' type='submit') Register 
+              form(class='form-inline validation-form' action='/users/demo' method='post' )
+                input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
+                //- input(name='email' value='john@doe.com' type='hidden')  
+                //- input(name='password' value="P@ssw0rd" type='hidden')  
+                button(type='submit' class='btn btn-primary' ) Demo User
+            div(id="splash-page-body_content-text_1")          
+              p(id="splash-page-body_content-text_1-2") Need movie advice? Feeling overwhelmed?
+              p(id="splash-page-body_content-text_1-3") Don't worry, we've got you covered!
+              p(id="splash-page-body_content-text_1-4") Login or Register and we'll help you figure out 
+              p(id="splash-page-body_content-text_1-5") What to Watch!
+            div(id="splash-page-body_content-text_2")                      
+              p(id="splash-page-body_content-text_2-1") - a clone of <a href="https://goodreads.com">GoodReads</a>
+          img(src='/05e0670c81d19c6aa6e9381b212c5ac4.jpg', class='film')

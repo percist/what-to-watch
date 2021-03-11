@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
+    vote: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     releaseDate: {
       type: DataTypes.STRING(25),
       allowNull: false
