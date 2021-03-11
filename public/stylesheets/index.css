@@ -1,17 +1,18 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 * {
-    box-sizing: border-box;
-    margin: 0 auto;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
-html,body {
+html,
+body {
   font: 14px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: blanchedalmond;
-  color: #473121
+  color: #473121;
 }
 
 #footer-bar {
@@ -37,18 +38,54 @@ html,body {
   font-size: 48px;
   color: khaki;
 }
-.navbar-text {
-background-color: tan;
-display: flex;
-width: 100vw;
-/* flex-direction: column; */
-align-items: center;
+
+#splash-page {
+  display: flex;
+  justify-content: center;
 }
+
+#splash-page-body {
+  height: 85vh;
+  display: flex;
+}
+
+#splash-page-body_content {
+  background-color: tan;
+  display: flex;
+  width: 420px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: calc(100% - 90px);
+  border-radius: 12px 0 0 12px;
+  padding: 15px;
+}
+#splash-page-body_content-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+  overflow: hidden;
+}
+
+#splash-page-body_content-text_1 p{
+  margin: 8px 0;
+  text-align: left;
+  font-size: 1em;
+}
+
+#splash-page-body_content-text_1-5 {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.5em !important;
+}
+
 .film {
   display: flex;
-/* width: 100vw; */
-flex-direction: column;
-align-items: center;
-  margin-top: 10px;
+  width: 100%;
+  object-fit: cover;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 90px;
+  border-radius: 0 12px 12px 0;
 }

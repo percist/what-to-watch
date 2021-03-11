@@ -2,31 +2,22 @@ extends layout
 block append head 
   include utils.pug
 block header
-  <h2>
 block content
     img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png' class='popcorn')
     h1 Login
     +validationErrorSummary(errors)
-    div(class='login-card')
+    div(id='login-card')
       form(action="/users/login" method='post' class='form-group')
         input(type='hidden' name='_csrf' value=csrfToken)
-        div(class='login-card_1')
+        div(id='login-card_1')
           label(for='email' class='form-label')= 'Email Address: '
-        div(class='login-card_2')  
+        div(id='login-card_2')  
           input(type='email' id='email' name='email' class='form-label' value=null)
-        div(class='login-card_3')  
+        div(id='login-card_3')  
           label(for='password' class='form-label')= 'Password: '
-        div(class='login-card_4')
+        div(id='login-card_4')
           input(type='password' id='password' name='password' value=null class='form-control')
-          div(class='login-card_5') 
-            button(type='submit' class='btn btn-primary' id='button-center') Login
-            a(href='/' class='btn btn-warning ml-2' id='button-center') Cancel
-    
-      form(action='/users/login' method='post' class='center')
-        input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
-        input(name='email' value='john@doe.com' type='hidden')  
-        input(name='password' value="P@ssw0rd" type='hidden')  
-        p Try out the demo before joining!
-        button(type='submit' class='btn btn-primary ' id='button-center') Demo User
-    div
+      div(id='login-card_5') 
+        button(type='submit' class='btn btn-primary' id='button-center') Login
+        button(href='/' class='btn btn-warning ml-2' id='button-center') Cancel
       p: a(href='/users/register') Don't have an account?
