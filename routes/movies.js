@@ -89,7 +89,7 @@ router.get('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
     runtime: movie.runtime,
     genres: movie.genres,
     overview: movie.overview,
-    vote: movie.vote,
+    rating: movie.vote,
     user
   })
 }));

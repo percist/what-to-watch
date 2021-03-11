@@ -27,6 +27,10 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
+      vote: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       releaseDate: {
         type: Sequelize.STRING,
         allowNull: false
