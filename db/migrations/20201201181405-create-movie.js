@@ -19,13 +19,17 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      tag: {
+        type: Sequelize.STRING(200),
+        allowNull:true
+      },
       genres: {
         type: Sequelize.STRING(50),
-        allowNull: false
+        allowNull: true
       },
       overview: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: true
       },
       releaseDate: {
         type: Sequelize.STRING,
@@ -35,11 +39,17 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      vote: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+      },
       createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       }
     });
   },
