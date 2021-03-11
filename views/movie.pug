@@ -23,14 +23,17 @@ block content
                         form(class='form-inline_watchList' action=`/movies/${movieId}/want` method='post')
                             input(type='hidden' value=movieId)
                             input(type='hidden' value=user.id)
-                            input(class='btn watchToggler' id='want-btn' type='submit' value='Want to Watch')
+                            input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
+                            button(class='btn watchToggler' id='want-btn' type='submit' value='Want to Watch') Want to Watch
                     li
                         form(class='form-inline_watchList' action=`/movies/${movieId}/watched` method='post')
                             input(type='hidden' value=movieId)
                             input(type='hidden' value=user.id)
-                            input(class='btn watchToggler' id="watch-btn" type='submit' value='Watched')
+                            input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
+                            button(class='btn watchToggler' id="watch-btn" type='submit' value='Watched') Watched
                     li
                         form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')
+                            input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
                             button(class='btn btn-pad' id='review' type='submit' disabled) Write a Review
             //- todo Write a Reveiw button GET movies/review form
         div

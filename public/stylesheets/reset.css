@@ -93,10 +93,6 @@
   transform: translateY(-0.08em);
 }
 
-#logout {
-  padding: 7px;
-}
-
 .table {
   padding-top: 150px;
 }
@@ -224,7 +220,6 @@ label {
 
 h1 {
   font-size: 1.5em;
-  margin: 10px;
 }
 
 /****** Style Star Rating Widget *****/

@@ -2,6 +2,7 @@ extends layout
 
 block content
   div(class='table-container')
+    h1= title
     if movies && movies.length > 0
       table(class='table' id='table-id')
         thead

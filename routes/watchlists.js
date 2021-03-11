@@ -85,19 +85,4 @@ router.get('/my-movies', restoreUser, asyncHandler(async (req, res) => {
 
 }));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router;

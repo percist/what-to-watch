@@ -5,13 +5,23 @@ const { asyncHandler, handleValidationErrors, csrfProtection} = require('../util
 const db = require('../db/models');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'What to Watch' });
-});
+router.get(
+  '/', 
+csrfProtection,
+restoreUser,
+asyncHandler(async(req, res, next) => {
+  const user = res.locals.user;
+  if (user){
+    return res.render('user', { 
+      user, 
+      csrfToken: req.csrfToken() 
+    });
+  }
+  res.render('index', { 
+    title: 'What to Watch',
+    csrfToken: req.csrfToken()
+  });
+}));
 
-// router.delete('/logout', (req, res) => {
-//   logoutUser(req, res);
-//   res.render('index', { title: 'What to Watch' });
-// });
 
 module.exports = router;

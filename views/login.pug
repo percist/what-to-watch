@@ -3,7 +3,8 @@ block append head
   include utils.pug
 block header
 block content
-    img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png' class='popcorn')
+    a(href='/')
+      img(src='https://cdn2.iconfinder.com/data/icons/cinema-and-music-innovicons-black-and-white/128/button-pop_corn-film_strip-cinema-movie-512.png' class='popcorn')
     div(id='login-card')
       h1 Login
       +validationErrorSummary(errors)
@@ -14,8 +15,8 @@ block content
             +field('Email Address: ', 'email', null)
           div(id='login-card-form_2' class='form-group-container')
             +field('Password: ', 'password', null, 'password')
-      div(id='login-card_3') 
-        button(type='submit' class='btn btn-primary' id='button-center') Login
-        button(class='btn btn-warning ml-2' id='button-center')
-          a(href='/' ) Cancel
+          div(id='login-card_3') 
+            button(type='submit' class='btn btn-primary' id='button-center') Login
+            button(class='btn btn-warning ml-2' id='button-center')
+              a(href='/' ) Cancel
       p: a(href='/users/register') Don't have an account?

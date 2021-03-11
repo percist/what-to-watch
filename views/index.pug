@@ -14,10 +14,10 @@ block content
                 button(class='btn btn-validate' href='/users/login' type='submit') Login
               form(class='form-inline validation-form' action='/users/register' method='get')
                 button(class='btn btn-validate' href='/users/register' type='submit') Register 
-              form(action='/users/login' method='post' class='form-inline validation-form')
+              form(class='form-inline validation-form' action='/users/demo' method='post' )
                 input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
-                input(name='email' value='john@doe.com' type='hidden')  
-                input(name='password' value="P@ssw0rd" type='hidden')  
+                //- input(name='email' value='john@doe.com' type='hidden')  
+                //- input(name='password' value="P@ssw0rd" type='hidden')  
                 button(type='submit' class='btn btn-primary' ) Demo User
             div(id="splash-page-body_content-text_1")          
               p(id="splash-page-body_content-text_1-2") Need movie advice? Feeling overwhelmed?
