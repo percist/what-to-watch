@@ -1,7 +1,7 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const { loginUser, logoutUser, restoreUser } = require('../auth');
-const { asyncHandler, handleValidationErrors, csrfProtection} = require('../utils')
+const { asyncHandler, handleValidationErrors, csrfProtection } = require('../utils')
 const bcrypt = require('bcrypt');
 const router = express.Router();
 
@@ -10,9 +10,9 @@ const { User } = db;
 
 const validateEmailAndPassword = [
   check('email')
-    .exists({checkFalsy: true})
+    .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Email Address')
-    .isLength({max: 255})
+    .isLength({ max: 255 })
     .withMessage('Email Address must not be more than 255 characters')
     .isEmail()
     .withMessage('Email Address is not a valid email')
@@ -25,16 +25,16 @@ const validateEmailAndPassword = [
         })
     }),
   check('password')
-    .exists({checkFalsy: true})
+    .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Password')
-    .isLength({max: 50})
+    .isLength({ max: 50 })
     .withMessage('Password must not be more than 50 characters long')
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
     .withMessage('Password must contain at least 1 lowercase letter, uppercase letter, number, and special character'),
   check('confirmPassword')
-    .exists({checkFalsy: true})
+    .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Confirm Password')
-    .isLength({max: 50})
+    .isLength({ max: 50 })
     .withMessage('Confirm Password must not be more than 50 characters long')
     .custom((value, { req }) => {
       if (value !== req.body.password) {
@@ -52,27 +52,44 @@ const validateEmailAndPasswordForLogin = [
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a password.'),
-  // handleValidationErrors,
 ];
 
-
-
-
-// Render index
-router.get('/', asyncHandler(async(req, res) => {
-  res.render('user');
+// Render index as splash page
+router.get(
+  '/', 
+  restoreUser,
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const user = res.locals.user;
+    if (user){
+      return res.render('user', { user, csrfToken: req.csrfToken() });
+    }
+    res.render('index', { 
+      title: 'What to Watch',
+      csrfToken: req.csrfToken()
+    });
 }));
 
-// render register page
-router.get('/register', csrfProtection, asyncHandler(async(req, res) => {
-  const user = db.User.build();
-  res.render('register', {
-    user,
-    csrfToken: req.csrfToken()
-  });
+// render registration form on register
+router.get(
+  '/register', 
+  csrfProtection, 
+  asyncHandler(async (req, res) => {
+
+    const user = db.User.build();
+    res.render('register', {
+      user,
+      csrfToken: req.csrfToken()
+    });
 }));
+
 // Create a new user
-router.post('/register', restoreUser, csrfProtection, validateEmailAndPassword, asyncHandler(async (req, res) => {
+router.post(
+  '/register', 
+  restoreUser, 
+  csrfProtection, 
+  validateEmailAndPassword, 
+  asyncHandler(async (req, res) => {
   const {
     firstName,
     lastName,
@@ -85,8 +102,6 @@ router.post('/register', restoreUser, csrfProtection, validateEmailAndPassword, 
     lastName,
     email
   });
-
-  
 
   const validatorErrors = validationResult(req);
 
@@ -113,7 +128,7 @@ router.post('/register', restoreUser, csrfProtection, validateEmailAndPassword, 
       csrfToken: req.csrfToken()
     });
   }
-  }));
+}));
 
 // render login page
 router.get('/login', csrfProtection, (req, res) => {
@@ -123,7 +138,11 @@ router.get('/login', csrfProtection, (req, res) => {
   })
 });
 
-router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHandler(async (req, res) => {
+router.post(
+  '/login', 
+  validateEmailAndPasswordForLogin, 
+  csrfProtection, 
+  asyncHandler(async (req, res) => {
   const {
     email,
     password
@@ -131,26 +150,22 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
   let errors = [];
   const validatorErrors = validationResult(req);
 
-
   if (validatorErrors.isEmpty()) {
     const user = await db.User.findOne({ where: { email } });
-    console.log(user);
 
     if (user !== null) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
 
       if (passwordMatch) {
-       loginUser(req, res, user);
-       return res.render('user', { user, csrfToken: req.csrfToken() });
+        loginUser(req, res, user);
+        return res.render('user', { user, csrfToken: req.csrfToken() });
       }
     }
     errors.push('Login failed for the provided email and password');
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
   }
-  
-  
-  // TODO: Do we need to pass the csrf token at this point?
+
   res.render('login', {
     title: 'Login',
     email,
@@ -158,6 +173,17 @@ router.post('/login', validateEmailAndPasswordForLogin, csrfProtection, asyncHan
     csrfToken: req.csrfToken()
   });
 
+}));
+
+router.post(
+  '/demo',
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    console.log("RPOUTE HIT!!!!!!!!!")
+    const user = await db.User.findOne({ where: { email: "john@doe.com" } });
+    console.log(user)
+    loginUser(req, res, user);
+    return res.render('user', { user, csrfToken: req.csrfToken() });
 }));
 
 module.exports = router;

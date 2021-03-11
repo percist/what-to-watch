@@ -8,12 +8,13 @@ mixin validationErrorSummary(errors)
           li= error
 
 mixin field(labelText, fieldName, fieldValue, fieldType='text')
-  div(class='form-group')
+  div(class='form-group-field')
     label(for=fieldName class='form-label')= labelText
-    input(type=fieldType id=fieldName name=fieldName value=fieldValue class='form-control')
+    div(class='form-control')
+      input(type=fieldType id=fieldName name=fieldName value=fieldValue class='form-control-input')
 
 mixin authentication()
-  span(class="navbar-text px-4")
+  div(class="navbar-text px-4")
     button(class='btn btn-sm btn-dark' href='/login') Login
     button(class='btn btn-sm btn-dark' href='/register') Register  
 
