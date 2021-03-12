@@ -175,15 +175,13 @@ router.post(
 
 }));
 
-router.post(
-  '/demo',
-  csrfProtection,
-  asyncHandler(async (req, res) => {
-    console.log("RPOUTE HIT!!!!!!!!!")
-    const user = await db.User.findOne({ where: { email: "john@doe.com" } });
-    console.log(user)
-    loginUser(req, res, user);
-    return res.render('user', { user, csrfToken: req.csrfToken() });
-}));
+// router.post(
+//   '/demo',
+//   csrfProtection,
+//   asyncHandler(async (req, res) => {
+//     const user = await db.User.findOne({ where: { email: "john@doe.com" } });
+//     loginUser(req, res, user);
+//     return res.render('user', { user, csrfToken: req.csrfToken() });
+// }));
 
 module.exports = router;

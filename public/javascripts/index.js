@@ -2,7 +2,6 @@ const apiurl = "/api";
 
 const changeWatchStatus = async (data, route) => {
   const url = `${apiurl}/${route}`;
-  console.log(url);
   const res = await fetch(url, {
     method: "PUT",
     headers: {
@@ -41,69 +40,4 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
   }
 
-  //querey for watchlist status and then based on it hide watchlist button
-
-  // const watched hidden=
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //   const demoButton = document.getElementById("demo-button");
-  //   const email = document.getElementById("email");
-  //   const password = document.getElementById("password");
-  //   demoButton.addEventListener("click", (event) => {
-  //     event.preventDefault();
-  //     email.innerHTML = "john@doe.com";
-  //     password.innerHTML = "P@ssw0rd";
-  //   });
-
-  //create div with html and await that and if the res.json comes back we create a div set the html to the res.json and appendchild to the body
-
-  // const watchedButton = document.querySelector('.watchToggler')
-  // const form = document.querySelector('.form-inline_watchList')
-
-  // watchedButton.addEventListener('click', async (e) => {
-  //     e.preventDefault()
-  //     // console.log('below prevent default____________________-')
-  //     if (watchedButton.value === "Watched") {
-  //         try {
-  //             // await changeWatchStatus('watched');
-  //             watchedButton.setAttribute("value", 'Remove');
-  //         } catch (e) {
-  //             console.log(e)
-  //         }
-  //     } else if (watchedButton.value === "Want to Watch") {
-  //         try {
-  //             // const FD = new FormData(form)
-  //             watchedButton.setAttribute("value", 'Watched');
-  //             // await changeWatchStatus('want');
-  //         } catch (e) {
-  //             console.log(e)
-  //         }
-  //     } else if (watchedButton.value === "Remove") {
-  //         try {
-  //             // await deleteWatchStatus()
-  //             watchedButton.setAttribute("value", 'Want to Watch');
-  //         } catch (e) {
-  //             console.log(e)
-  //         }
-  //     }
-  // });
 });

@@ -261,6 +261,21 @@ h1 {
   color: #ffed85;
 }
 
+.movie-container-1 .rating > input:checked ~ label, /* show gold star when clicked */
+.movie-container-1 .rating:not(:checked) > label:hover, /* hover current star */
+.movie-container-1 .rating:not(:checked) > label:hover ~ label {
+  color: none;
+} /* hover previous stars in list */
+
+.movie-container-1 .rating > input:checked + label:hover, /* hover current star when changing rating */
+.movie-container-1 .rating > input:checked ~ label:hover,
+.movie-container-1 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.movie-container-1 .rating > input:checked ~ label:hover ~ label {
+  color: #ffd700;
+}
+
+
+
 #small-poster {
   width: 100px;
 }

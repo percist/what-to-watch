@@ -27,7 +27,6 @@ for (let i = 0; i < 50; i++) {
       }
   });
 
-console.log(movieObject);
 
 await fs.writeFile('movies.txt', JSON.stringify(movieObject), function (err) {
     if (err)

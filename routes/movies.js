@@ -78,12 +78,10 @@ router.get('/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
     }
   })
   const user = res.locals.user;
-
   res.render('movie', {
     movieId: movie.id,
     reviews,
     title: movie.title,
-    tagline: movie.tagline,
     poster: `https://image.tmdb.org/t/p/original${movie.posterPath}`,
     releaseDate: movie.releaseDate,
     runtime: movie.runtime,
@@ -146,7 +144,7 @@ router.post(
   const movieWanted = await db.WatchedMovie.findOne({
     where: {
       movieId: movieId,
-      watchListId: userWatchlist.id
+      watchlistId: userWatchlist.id
     }
   })
 
@@ -154,16 +152,16 @@ router.post(
     if (movieWanted.watchStatus === 'watched') {
       movieWanted.watchStatus = 'want';
       movieWanted.save();
-      return res.redirect('/users/watchlists/want')
+      return res.redirect('/watchlists/want')
     }
   } else {
     const newWant = await db.WatchedMovie.create({
-      watchListId: userWatchlist.id,
+      watchlistId: userWatchlist.id,
       movieId: movieId,
       watchStatus: 'want',
     })
 
-    return res.redirect('/users/watchlists/want')
+    return res.redirect('/watchlists/want')
   }
 }))
 
@@ -175,33 +173,27 @@ router.post(
   const movieId = parseInt(req.params.id, 10);
   const user = res.locals.user
 
-  const userWatchlist = await db.Watchlist.findOne({
-    where: {
-      userId: user.id
-    }
-  })
-
   const movieWatched = await db.WatchedMovie.findOne({
     where: {
       movieId: movieId,
-      watchListId: userWatchlist.id
+      watchlistId: user.id
     }
   })
 
   if (movieWatched) {
     if (movieWatched.watchStatus === 'want') {
       movieWatched.watchStatus = 'watched';
-      movieWatched.save();
-      return res.redirect('/users/watchlists/watched')
+      await movieWatched.save();
+      return res.redirect('/watchlists/watched')
     }
   }
   const newWatched = await db.WatchedMovie.create({
-    watchListId: userWatchlist.id,
+    watchlistId: user.id,
     movieId: movieId,
     watchStatus: 'watched',
   })
 
-  return res.redirect('/users/watchlists/watched')
+  return res.redirect('/watchlists/watched')
 
 }))
 
@@ -211,7 +203,7 @@ router.get('/:id(\\d+)/status', restoreUser, asyncHandler(async (req, res) => {
   const watchStatus = await db.WatchedMovie.findOne({
     where: {
       movieId,
-      watchListId: user.id,
+      watchlistId: user.id,
     }
   });
   if (!watchStatus) return null

@@ -1,8 +1,6 @@
 const getWatched = async (movieId) => {
   const res = await fetch(`${movieId}/status`);
-  console.log('!@#!@#$@$%#$%#$%#$%#$%#$%')
   const parsed = await res.json()
-  console.log(parsed)
 
   if (parsed === false) {
     return false;
@@ -11,16 +9,6 @@ const getWatched = async (movieId) => {
   } else return;
 
 }
-
-// const getWantToWatch = async (movieId) => {
-//   const res = await fetch("users/watchlists/want");
-//   // console.log(res.json())
-//   return res.json();
-
-// }
-
-// make api routes to query user's movie lists
-
 
 document.addEventListener("DOMContentLoaded", async (event) => {
   const wantButton = document.getElementById('want-btn');

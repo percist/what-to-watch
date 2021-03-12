@@ -32,7 +32,6 @@ router.get(
     }]
   }
   const movies = await db.Movie.findAll(object);
-  console.log("MOVIES******", movies)
   res.render('watchlist', {
     movies,
     user,
