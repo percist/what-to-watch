@@ -1,23 +1,8 @@
 'use strict';
-const bcrypt = require('bcrypt')
-
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    queryInterface.bulkInsert('Users', [
-        {firstName: 'John', lastName: 'Johne', email: 'john@doe.com', hashedPassword: bcrypt.hashSync('P@ssw0rd', 10)
-        , createdAt: new Date(), updatedAt: new Date() },  
-        {firstName: 'Jon', lastName: 'Johne', email: 'jon@doe.com', hashedPassword: bcrypt.hashSync('P@ssw0rd', 10)
-        , createdAt: new Date(), updatedAt: new Date() },  
-        {firstName: 'Jean', lastName: 'Valjean', email: 'jean@doe.com', hashedPassword: bcrypt.hashSync('P@ssw0rd', 10)
-        , createdAt: new Date(), updatedAt: new Date() },  
-        {firstName: 'Jonathan', lastName: 'Johns', email: 'jonathan@doe.com', hashedPassword: bcrypt.hashSync('P@ssw0rd', 10)
-        , createdAt: new Date(), updatedAt: new Date() },  
-        {firstName: 'Geon', lastName: 'Johnson', email: 'geon@doe.com', hashedPassword: bcrypt.hashSync('P@ssw0rd', 10)
-        , createdAt: new Date(), updatedAt: new Date() }  
-      ], {});
-
-    queryInterface.bulkInsert('Movies', [
+    return queryInterface.bulkInsert('Movies', [
       { title: 'Aladdin',
   tag: 'Wish granted!',
   posterPath: '/eLFfl7vS8dkeG1hKp5mwbm37V83.jpg',
@@ -914,72 +899,10 @@ module.exports = {
   releaseDate: '1983-07-29',
   runtime: 117 }
 
-
-
-
     ], {});
-
-    queryInterface.bulkInsert('Watchlists', [
-      {userId: 1, createdAt: new Date(), updatedAt: new Date()},
-      {userId: 2, createdAt: new Date(), updatedAt: new Date()},
-      {userId: 3, createdAt: new Date(), updatedAt: new Date()},
-      {userId: 4, createdAt: new Date(), updatedAt: new Date()},
-      {userId: 5, createdAt: new Date(), updatedAt: new Date()},
-        
-    ], {});
-
-    queryInterface.bulkInsert('WatchedMovies', [
-      { watchListId: 1, movieId: 78, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 95, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 49, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 79, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 48, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 69, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 45, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 27, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 33, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 49, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 97, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 2, movieId: 33, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 2, movieId: 47, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 2, movieId: 25, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 2, movieId: 30, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 2, movieId: 88, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 3, movieId: 27, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 4, movieId: 150, watchStatus: 'want', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 4, movieId: 27, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 5, movieId: 99, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 4, movieId: 99, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 3, movieId: 99, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      { watchListId: 1, movieId: 99, watchStatus: 'watched', createdAt: new Date(), updatedAt: new Date() },
-      
-      
-    ], {});
-    return queryInterface.bulkInsert('Reviews', [
-      { stars: 5, review: 'What a great film!', userId: 1, movieId: 78, createdAt: new Date(), updatedAt: new Date() },
-      { stars: 1, review: 'I hated it.', userId: 3, movieId: 5, createdAt: new Date(), updatedAt: new Date() },
-      { stars: 4, review: 'Family fun.', userId: 1, movieId: 27, createdAt: new Date(), updatedAt: new Date() },
-      { stars: 3, review: 'left in the middle', userId: 3, movieId: 27, createdAt: new Date(), updatedAt: new Date() },
-      { stars: 5, review: 'my favorite movie!', userId: 4, movieId: 27, createdAt: new Date(), updatedAt: new Date() },
-      { stars: 5, review: 'jolly good times', userId: 5, movieId: 99, createdAt: new Date(), updatedAt: new Date() },
-      { stars: 3, review: 'whose idea was this', userId: 4, movieId: 99, createdAt: new Date(), updatedAt: new Date() },
-      { stars: 5, review: 'golden age of cinema', userId: 3, movieId: 99, createdAt: new Date(), updatedAt: new Date() },
-      { stars: 5, review: 'this deserves awards', userId: 1, movieId: 99, createdAt: new Date(), updatedAt: new Date() },
-   
-      
-      
-    ], {});
-
-
-    
   },
 
   down: (queryInterface, Sequelize) => {
-  queryInterface.bulkDelete('Users', null, {});
-  queryInterface.bulkDelete('Movies', null, {});
-  queryInterface.bulkDelete('Watchlists', null, {});
-  queryInterface.bulkDelete('WatchedMovies', null, {});
-  return queryInterface.bulkDelete('Reviews', null, {});
-  
+      return queryInterface.bulkDelete('Movies', null, {});
   }
 };

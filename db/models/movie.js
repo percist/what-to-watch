@@ -25,10 +25,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
     releaseDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(25),
       allowNull: false
     },
     runtime: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    vote: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
