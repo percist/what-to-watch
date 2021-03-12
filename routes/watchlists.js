@@ -13,7 +13,10 @@ const db = require('../db/models');
 
 
 // User Clicks on 'Want to Watch' and a table containing their movies is returned
-router.get('/want', restoreUser, asyncHandler(async (req, res) => {
+router.get(
+  '/want', 
+  restoreUser, 
+  asyncHandler(async (req, res) => {
   const user = res.locals.user
   const object = {
     include: [{
@@ -29,10 +32,11 @@ router.get('/want', restoreUser, asyncHandler(async (req, res) => {
     }]
   }
   const movies = await db.Movie.findAll(object);
-  console.log(user)
+  console.log("MOVIES******", movies)
   res.render('watchlist', {
     movies,
-    user
+    user,
+    listing: "Movies I Want to Watch:"
   });
 
 }));
@@ -56,7 +60,8 @@ router.get('/watched', restoreUser, asyncHandler(async (req, res) => {
   const movies = await db.Movie.findAll(object);
   res.render('watchlist', {
     movies,
-    user
+    user,
+    listing: "Movies I Watched:"
   });
 
 }));

@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   Watchlist.associate = function(models) {
     const columnMapping = {
       foreignKey: 'watchlistId',
-      through: 'WatchedMovies', // This is the model name referencing the join table.
+      through: models.WatchedMovie, // This is the model name referencing the join table.
       otherKey: 'movieId',
     }
 

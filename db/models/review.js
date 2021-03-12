@@ -10,12 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: { model: "Users"}
     },
     movieId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: { model: "Movies"}
     }
   }, {});
   Review.associate = function(models) {
