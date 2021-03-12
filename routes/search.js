@@ -13,7 +13,8 @@ router.get('/alpha-order', restoreUser, asyncHandler(async(req, res) => {
   const user = res.locals.user;
     res.render('watchlist', {
       movies,
-      user
+      user,
+      listing: "Alphabetical Order"
     });
   
   }));
@@ -28,20 +29,21 @@ router.get('/released', restoreUser, asyncHandler(async(req, res) => {
   const user = res.locals.user;
     res.render('watchlist', {
       movies,
-      user
+      user,
+      listing: "Date Released"
     });
   }));
 
 router.get('/random', restoreUser, asyncHandler(async(req, res) => {
-  const random = Math.floor((Math.random() * 200) + 1);
+  const random = Math.floor((Math.random() * 50) + 1);
   const movies = [];
   movies.push(await db.Movie.findByPk(random))
   const user = res.locals.user;
     res.render('watchlist', {
       movies,
-      user
+      user,
+      listing: "Here's a Random Pick!"
     });
-    
 
   }));
 
