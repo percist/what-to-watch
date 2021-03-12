@@ -8,8 +8,8 @@ block content
         thead
           tr
             th(scope='col') poster
-            th(scope='col') title
-            th(scope='col') genre
+            th(scope='col' id="title-column") title
+            th(scope='col' id="vote-column") rating
         tbody
           each movie in movies
             tr
@@ -20,9 +20,18 @@ block content
                 else
                   p No poster for this movie
               td: a(href=`/movies/${movie.id}`) #{movie.title}
-              td= movie.genres
-                //- conditional button
-                //- a(class='btn' href=`ajaxsomething` role='button') TOGGLER!
+              td 
+                fieldset.rating
+                  input.star5(type='checkbox' name='rating' disabled=true checked=movie.vote>=9.5)
+                  label.full(for='star5' title='Awesome - 5 stars' hidden=movie.vote<9.5)
+                  input.star4(type='checkbox' name='rating' disabled=true checked=movie.vote>=8)
+                  label.full(for='star4' title='Pretty good - 4 stars' hidden=movie.vote<8)
+                  input.star3(type='checkbox' name='rating' disabled=true checked=movie.vote>=6)
+                  label.full(for='star3' title='Meh - 3 stars' hidden=movie.vote<6)
+                  input.star2(type='checkbox' name='rating' disabled=true checked=movie.vote>=4)
+                  label.full(for='star2' title='Kinda bad - 2 stars' hidden=movie.vote<4)
+                  input.star1(type='checkbox' name='rating' disabled=true checked=movie.vote>=2)
+                  label.full(for='star1' title='Sucks big time - 1 star' hidden=movie.vote<2)
     else
       p(class='empty'): em You don't have any movies on your Want to Watch list!
     
