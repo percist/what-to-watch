@@ -56,24 +56,24 @@ const validateEmailAndPasswordForLogin = [
 
 // Render index as splash page
 router.get(
-  '/', 
+  '/',
   restoreUser,
   csrfProtection,
   asyncHandler(async (req, res) => {
     const user = res.locals.user;
-    if (user){
+    if (user) {
       return res.render('user', { user, csrfToken: req.csrfToken() });
     }
-    res.render('index', { 
+    res.render('index', {
       title: 'What to Watch',
       csrfToken: req.csrfToken()
     });
-}));
+  }));
 
 // render registration form on register
 router.get(
-  '/register', 
-  csrfProtection, 
+  '/register',
+  csrfProtection,
   asyncHandler(async (req, res) => {
 
     const user = db.User.build();
@@ -81,54 +81,54 @@ router.get(
       user,
       csrfToken: req.csrfToken()
     });
-}));
+  }));
 
 // Create a new user
 router.post(
-  '/register', 
-  restoreUser, 
-  csrfProtection, 
-  validateEmailAndPassword, 
+  '/register',
+  restoreUser,
+  csrfProtection,
+  validateEmailAndPassword,
   asyncHandler(async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-  } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+    } = req.body;
 
-  const user = await db.User.build({
-    firstName,
-    lastName,
-    email
-  });
-
-  const validatorErrors = validationResult(req);
-
-  if (validatorErrors.isEmpty()) {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    user.hashedPassword = hashedPassword;
-    await user.save();
-    const newUser = await db.User.findOne({
-      where: {
-        email
-      }
-    })
-    const watchlist = await db.Watchlist.create({
-      userId: newUser.id
-    })
-    loginUser(req, res, user);
-    return res.render('user', { user, csrfToken: req.csrfToken() });
-  } else {
-    const errors = validatorErrors.array().map((error) => error.msg);
-    res.render('register', {
-      title: 'Register',
-      user,
-      errors,
-      csrfToken: req.csrfToken()
+    const user = await db.User.build({
+      firstName,
+      lastName,
+      email
     });
-  }
-}));
+
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      user.hashedPassword = hashedPassword;
+      await user.save();
+      const newUser = await db.User.findOne({
+        where: {
+          email
+        }
+      })
+      const watchlist = await db.Watchlist.create({
+        userId: newUser.id
+      })
+      loginUser(req, res, user);
+      return res.render('user', { user, csrfToken: req.csrfToken() });
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      return res.render('register', {
+        title: 'Register',
+        user,
+        errors,
+        csrfToken: req.csrfToken()
+      });
+    }
+  }));
 
 // render login page
 router.get('/login', csrfProtection, (req, res) => {
@@ -139,41 +139,41 @@ router.get('/login', csrfProtection, (req, res) => {
 });
 
 router.post(
-  '/login', 
-  validateEmailAndPasswordForLogin, 
-  csrfProtection, 
+  '/login',
+  validateEmailAndPasswordForLogin,
+  csrfProtection,
   asyncHandler(async (req, res) => {
-  const {
-    email,
-    password
-  } = req.body;
-  let errors = [];
-  const validatorErrors = validationResult(req);
+    const {
+      email,
+      password
+    } = req.body;
+    let errors = [];
+    const validatorErrors = validationResult(req);
 
-  if (validatorErrors.isEmpty()) {
-    const user = await db.User.findOne({ where: { email } });
+    if (validatorErrors.isEmpty()) {
+      const user = await db.User.findOne({ where: { email } });
 
-    if (user !== null) {
-      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+      if (user !== null) {
+        const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
 
-      if (passwordMatch) {
-        loginUser(req, res, user);
-        return res.render('user', { user, csrfToken: req.csrfToken() });
+        if (passwordMatch) {
+          loginUser(req, res, user);
+          return res.render('user', { user, csrfToken: req.csrfToken() });
+        }
       }
+      errors.push('Login failed for the provided email and password');
+    } else {
+      errors = validatorErrors.array().map((error) => error.msg);
     }
-    errors.push('Login failed for the provided email and password');
-  } else {
-    errors = validatorErrors.array().map((error) => error.msg);
-  }
 
-  res.render('login', {
-    title: 'Login',
-    email,
-    errors,
-    csrfToken: req.csrfToken()
-  });
+    return res.render('login', {
+      title: 'Login',
+      email,
+      errors,
+      csrfToken: req.csrfToken()
+    });
 
-}));
+  }));
 
 router.post(
   '/demo',
@@ -182,6 +182,6 @@ router.post(
     const user = await db.User.findOne({ where: { email: "john@doe.com" } });
     loginUser(req, res, user);
     return res.render('user', { user, csrfToken: req.csrfToken() });
-}));
+  }));
 
 module.exports = router;
