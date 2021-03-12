@@ -379,3 +379,8 @@ button:disabled {
 .movie-reviews_stars{
   width: 180px;
 }
+
+.page-head {
+  padding-left: 200px;
+  padding-bottom: 30px;
+}
