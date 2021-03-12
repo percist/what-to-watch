@@ -38,27 +38,27 @@ block content
                               input(type='hidden' value=movieId)
                               input(type='hidden' value=user.id)
                               input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
-                              button(class='btn watchToggler' id="watch-btn" type='submit' value='Watched') Watched
+                              button(class='btn watchToggler' id="watch-btn" type='submit' value='Watched') Watched   
                       
                           form(class='form-inline ' action=`/movies/${movieId}/reviews/new` method='get')
                               input(name='_csrf' value=csrfToken type='hidden' class='form-group')  
-                              button(class='btn btn-pad' id='review' type='submit' disabled) Write a Review
-          div(class="movie-reviews")
+                              button(class='btn btn-pad watchToggler' id='review' type='submit' disabled) Write a Review
+          div(class="movie-reviews-container")
               if reviews 
                   each review in reviews
-                      div(class="movie-reviews_stars")
-                        div.stars
-                              fieldset.rating
-                                input.star5(type='checkbox' name='rating' disabled=true checked=review.stars==5)
-                                label.full(for='star5' title='Awesome - 5 stars' hidden=review.stars!=5)
-                                input.star4(type='checkbox' name='rating' disabled=true checked=review.stars==4)
-                                label.full(for='star4' title='Pretty good - 4 stars' hidden=review.stars<4)
-                                input.star3(type='checkbox' name='rating' disabled=true checked=review.stars==3)
-                                label.full(for='star3' title='Meh - 3 stars' hidden=review.stars<3)
-                                input.star2(type='checkbox' name='rating' disabled=true checked=review.stars==2)
-                                label.full(for='star2' title='Kinda bad - 2 stars' hidden=review.stars<2)
-                                input.star1(type='checkbox' name='rating' disabled=true checked=review.stars==1)
-                                label.full(for='star1' title='Sucks big time - 1 star' hidden=review.stars<1)
+                    div.movie-review
+                      div(class="movie-reviews_stars stars")
+                        fieldset.rating
+                          input.star5(type='checkbox' name='rating' disabled=true checked=review.stars==5)
+                          label.full(for='star5' title='Awesome - 5 stars' hidden=review.stars!=5)
+                          input.star4(type='checkbox' name='rating' disabled=true checked=review.stars==4)
+                          label.full(for='star4' title='Pretty good - 4 stars' hidden=review.stars<4)
+                          input.star3(type='checkbox' name='rating' disabled=true checked=review.stars==3)
+                          label.full(for='star3' title='Meh - 3 stars' hidden=review.stars<3)
+                          input.star2(type='checkbox' name='rating' disabled=true checked=review.stars==2)
+                          label.full(for='star2' title='Kinda bad - 2 stars' hidden=review.stars<2)
+                          input.star1(type='checkbox' name='rating' disabled=true checked=review.stars==1)
+                          label.full(for='star1' title='Sucks big time - 1 star' hidden=review.stars<1)
                       div(class="movie-reviews_text")=review.review
               else 
                   p There are no reviews. Be the first to review this movie!

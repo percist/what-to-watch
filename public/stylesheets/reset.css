@@ -261,16 +261,16 @@ h1 {
   color: #ffed85;
 }
 
-.movie-container-1 .rating > input:checked ~ label, /* show gold star when clicked */
-.movie-container-1 .rating:not(:checked) > label:hover, /* hover current star */
-.movie-container-1 .rating:not(:checked) > label:hover ~ label {
+.movie-container .rating > input:checked ~ label, /* show gold star when clicked */
+.movie-container .rating:not(:checked) > label:hover, /* hover current star */
+.movie-container .rating:not(:checked) > label:hover ~ label {
   color: none;
 } /* hover previous stars in list */
 
-.movie-container-1 .rating > input:checked + label:hover, /* hover current star when changing rating */
-.movie-container-1 .rating > input:checked ~ label:hover,
-.movie-container-1 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.movie-container-1 .rating > input:checked ~ label:hover ~ label {
+.movie-container .rating > input:checked + label:hover, /* hover current star when changing rating */
+.movie-container .rating > input:checked ~ label:hover,
+.movie-container .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.movie-container .rating > input:checked ~ label:hover ~ label {
   color: #ffd700;
 }
 
@@ -321,20 +321,30 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 40vw;
 }
 
 .movie-info li {
   list-style-type: none;
-  padding: 1%;
+  margin: 8px;
 }
 
-.watchToggler,
-.btn-pad {
-  /* padding-left: 200px; */
+#watch-buttons {
+  margin: 10px;
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.movie-reviews {
-  padding-left: 200px;
+.watchToggler {
+  height: 44px;
+}
+
+.movie-reviews-container {
+  padding-left: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 button:disabled {
@@ -349,4 +359,14 @@ button:disabled {
   background-color: #473121;
   color: white;
   cursor: not-allowed;
+}
+
+.movie-review{
+  display:flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.movie-reviews_stars{
+  width: 180px;
 }
