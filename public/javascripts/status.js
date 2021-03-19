@@ -28,21 +28,4 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
   }
 
-  // const want = await getWantToWatch(movieId);
-
-  // wantButton.hidden = want;
-
-  // if (want) {
-  //   (wantButton.hidden = true) && (watchedButton.hidden = false)
-  // }
-  // if (watched) {
-  //   watchedButton.hidden = true
-  // }
-
-
-
-
-
-
-
 })

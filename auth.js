@@ -4,7 +4,6 @@ const loginUser = (req, res, user) => {
   req.session.auth = {
     userId: user.id,
   };
-  return res.redirect('/search/alpha-order');
 };
 
 const logoutUser = (req, res) => {
