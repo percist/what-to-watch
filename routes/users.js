@@ -181,7 +181,11 @@ router.post(
   asyncHandler(async (req, res) => {
     const user = await db.User.findOne({ where: { email: "john@doe.com" } });
     loginUser(req, res, user);
-    return res.render('user', { user, csrfToken: req.csrfToken() });
+    return res.render('watchlist', { 
+      user, 
+      listing: "Welcome to What to Watch!",
+      csrfToken: req.csrfToken() 
+    });
 }));
 
 module.exports = router;
