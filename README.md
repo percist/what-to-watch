@@ -1,5 +1,5 @@
 # What to Watch
-* [Chris Clark](https://percist.github.io/), [Ahdari Scott](https://koran23.github.io/), [Elyse Steingold](https://elyselindsays.github.io/), and [Samuel Nunn](https://samuelnunn.github.io/) - [Live site](https://next-round.herokuapp.com/)
+* [Chris Clark](https://percist.github.io/), [Ahdari Scott](https://koran23.github.io/), [Elyse Steingold](https://elyselindsays.github.io/), and [Samuel Nunn](https://samuelnunn.github.io/) - [Live site](https://what--to-watch.herokuapp.com/)
 
 A Goodreads clone focused on movies.
 
